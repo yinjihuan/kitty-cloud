@@ -1,0 +1,3 @@
+com/cxytiandi/kittycloud/user/provider/KittyCloudUserProviderApp.class
+com/cxytiandi/kittycloud/user/provider/convert/UserResponseConvert.class
+com/cxytiandi/kittycloud/user/provider/service/UserRemoteServiceImpl.class

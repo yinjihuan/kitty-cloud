@@ -1,0 +1,8 @@
+/Users/yinjihuan/Documents/workspace_spring_cloud/kitty-cloud/kitty-cloud-user/kitty-cloud-user-biz/src/main/java/com/cxytiandi/kittycloud/user/biz/service/impl/UserServiceImpl.java
+/Users/yinjihuan/Documents/workspace_spring_cloud/kitty-cloud/kitty-cloud-user/kitty-cloud-user-biz/src/main/java/com/cxytiandi/kittycloud/user/biz/convert/UserBoConvert.java
+/Users/yinjihuan/Documents/workspace_spring_cloud/kitty-cloud/kitty-cloud-user/kitty-cloud-user-biz/src/main/java/com/cxytiandi/kittycloud/user/biz/bo/UserBO.java
+/Users/yinjihuan/Documents/workspace_spring_cloud/kitty-cloud/kitty-cloud-user/kitty-cloud-user-biz/src/main/java/com/cxytiandi/kittycloud/user/biz/service/UserService.java
+/Users/yinjihuan/Documents/workspace_spring_cloud/kitty-cloud/kitty-cloud-user/kitty-cloud-user-biz/src/main/java/com/cxytiandi/kittycloud/user/biz/enums/SexEnum.java
+/Users/yinjihuan/Documents/workspace_spring_cloud/kitty-cloud/kitty-cloud-user/kitty-cloud-user-biz/src/main/java/com/cxytiandi/kittycloud/user/biz/dao/UserDao.java
+/Users/yinjihuan/Documents/workspace_spring_cloud/kitty-cloud/kitty-cloud-user/kitty-cloud-user-biz/src/main/java/com/cxytiandi/kittycloud/user/biz/enums/UserStatusEnum.java
+/Users/yinjihuan/Documents/workspace_spring_cloud/kitty-cloud/kitty-cloud-user/kitty-cloud-user-biz/src/main/java/com/cxytiandi/kittycloud/user/biz/dataobject/UserDO.java
