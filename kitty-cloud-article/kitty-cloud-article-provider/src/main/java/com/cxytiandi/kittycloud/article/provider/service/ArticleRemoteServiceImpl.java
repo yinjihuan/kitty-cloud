@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ArticleRemoteServiceImpl implements ArticleRemoteService {
 
+    @Override
     public ResponseData<ArticleResponse> getArticle(int articleId) {
         return Response.ok(new ArticleResponse());
     }
