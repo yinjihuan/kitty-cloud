@@ -63,4 +63,10 @@ public class ArticleDO extends Entity {
      * 文章状态
      */
     private ArticleStatusEnum status;
+
+    /**
+     * 热度值（点赞数+评论数+访问数）
+     */
+    private Integer heat;
+
 }
