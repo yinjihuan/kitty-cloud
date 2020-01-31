@@ -6,6 +6,7 @@ import com.cxytiandi.kittycloud.user.api.response.UserResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
@@ -24,7 +25,7 @@ public interface UserRemoteService {
      * @param userId 用户ID
      * @return
      */
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}")
     ResponseData<UserResponse> getUser(@PathVariable("userId") Long userId);
 
     /**
@@ -32,6 +33,7 @@ public interface UserRemoteService {
      * @param loginRequest 登录参数
      * @return token
      */
+    @PostMapping("/users/login")
     ResponseData<String> login(@RequestBody UserLoginRequest loginRequest);
 
 }

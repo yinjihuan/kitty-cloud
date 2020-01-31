@@ -1,7 +1,7 @@
 package com.cxytiandi.kittycloud.article.biz.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cxytiandi.kittycloud.article.biz.bo.ArticleBO;
-import java.util.List;
 
 
 /**
@@ -19,7 +19,7 @@ public interface ArticleService {
      * @param articleId 文章ID
      * @return
      */
-    ArticleBO getArticle(int articleId);
+    ArticleBO getArticle(Long articleId);
 
     /**
      * 热门文章
@@ -27,7 +27,7 @@ public interface ArticleService {
      * @param pageSize 页大小
      * @return
      */
-    List<ArticleBO> listHotArticles(int page, int pageSize);
+    Page<ArticleBO> listHotArticles(int page, int pageSize);
 
     /**
      * 最新文章
@@ -35,6 +35,6 @@ public interface ArticleService {
      * @param pageSize  页大小
      * @return
      */
-    List<ArticleBO> listNewestArticles(int page, int pageSize);
+    Page<ArticleBO> listNewestArticles(int page, int pageSize);
 
 }

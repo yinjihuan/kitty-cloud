@@ -1,11 +1,10 @@
 package com.cxytiandi.kittycloud.article.api.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 
 /**
  * 文章REST/RPC接口
@@ -23,7 +22,7 @@ public interface ArticleRemoteService {
      * @return
      */
     @GetMapping("/articles/{articleId}")
-    ResponseData<ArticleResponse> getArticle(@PathVariable int articleId);
+    ResponseData<ArticleResponse> getArticle(@PathVariable Long articleId);
 
     /**
      * 热门文章
@@ -32,7 +31,7 @@ public interface ArticleRemoteService {
      * @return
      */
     @GetMapping("/articles/hot")
-    ResponseData<List<ArticleResponse>> listHotArticles(int page, int pageSize);
+    ResponseData<IPage<ArticleResponse>> listHotArticles(int page, int pageSize);
 
     /**
      * 最新文章
@@ -41,6 +40,6 @@ public interface ArticleRemoteService {
      * @return
      */
     @GetMapping("/articles/newest")
-    ResponseData<List<ArticleResponse>> listNewestArticles(int page, int pageSize);
+    ResponseData<IPage<ArticleResponse>> listNewestArticles(int page, int pageSize);
 
 }

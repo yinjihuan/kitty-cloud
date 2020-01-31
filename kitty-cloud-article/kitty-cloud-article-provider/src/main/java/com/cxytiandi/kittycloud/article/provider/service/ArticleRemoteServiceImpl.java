@@ -1,5 +1,7 @@
 package com.cxytiandi.kittycloud.article.provider.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
 import com.cxytiandi.kittycloud.article.api.service.ArticleRemoteService;
 import com.cxytiandi.kittycloud.article.biz.bo.ArticleBO;
@@ -30,23 +32,27 @@ public class ArticleRemoteServiceImpl implements ArticleRemoteService {
     private ArticleResponseConvert articleResponseConvert;
 
     @Override
-    public ResponseData<ArticleResponse> getArticle(int articleId) {
+    public ResponseData<ArticleResponse> getArticle(Long articleId) {
         ArticleBO article = articleService.getArticle(articleId);
         return Response.ok(articleResponseConvert.convert(article));
     }
 
     @Override
-    public ResponseData<List<ArticleResponse>> listHotArticles(int page, int pageSize) {
-        List<ArticleBO> articles = articleService.listHotArticles(page, pageSize);
-        List<ArticleResponse> articleResponses = articles.stream().map(articleResponseConvert::convert).collect(Collectors.toList());
-        return Response.ok(articleResponses);
+    public ResponseData<IPage<ArticleResponse>> listHotArticles(int page, int pageSize) {
+        Page<ArticleBO> articlesPage = articleService.listHotArticles(page, pageSize);
+        Page pageResponse = new Page(page, pageSize, articlesPage.getTotal());
+        List<ArticleResponse> articleResponses = articlesPage.getRecords().stream().map(articleResponseConvert::convert).collect(Collectors.toList());
+        pageResponse.setRecords(articleResponses);
+        return Response.ok(pageResponse);
     }
 
     @Override
-    public ResponseData<List<ArticleResponse>> listNewestArticles(int page, int pageSize) {
-        List<ArticleBO> articles = articleService.listNewestArticles(page, pageSize);
-        List<ArticleResponse> articleResponses = articles.stream().map(articleResponseConvert::convert).collect(Collectors.toList());
-        return Response.ok(articleResponses);
+    public ResponseData<IPage<ArticleResponse>> listNewestArticles(int page, int pageSize) {
+        Page<ArticleBO> articlesPage = articleService.listNewestArticles(page, pageSize);
+        Page pageResponse = new Page(page, pageSize, articlesPage.getTotal());
+        List<ArticleResponse> articleResponses = articlesPage.getRecords().stream().map(articleResponseConvert::convert).collect(Collectors.toList());
+        pageResponse.setRecords(articleResponses);
+        return Response.ok(pageResponse);
     }
 
 }
