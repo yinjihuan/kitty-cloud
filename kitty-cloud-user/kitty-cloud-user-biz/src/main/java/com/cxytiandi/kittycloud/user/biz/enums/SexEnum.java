@@ -1,7 +1,6 @@
 package com.cxytiandi.kittycloud.user.biz.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
-
 /**
  * 性别枚举
  *
@@ -37,4 +36,11 @@ public enum SexEnum {
      */
     private String descp;
 
+    public int getSex() {
+        return sex;
+    }
+
+    public String getDescp() {
+        return descp;
+    }
 }

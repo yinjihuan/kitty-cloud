@@ -42,4 +42,11 @@ public enum ArticleTypeEnum {
      */
     private String descp;
 
+    public int getType() {
+        return type;
+    }
+
+    public String getDescp() {
+        return descp;
+    }
 }

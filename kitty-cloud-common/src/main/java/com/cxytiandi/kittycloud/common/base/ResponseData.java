@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.common.base;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @about http://cxytiandi.com/about
  *
  */
-public class ResponseData<T> {
+public class ResponseData<T> implements Serializable {
 	private int code = 200;
 	private String message = "";
 	private T data;

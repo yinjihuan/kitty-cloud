@@ -37,4 +37,11 @@ public enum UserStatusEnum {
      */
     private String descp;
 
+    public String getDescp() {
+        return descp;
+    }
+
+    public int getStatus() {
+        return status;
+    }
 }

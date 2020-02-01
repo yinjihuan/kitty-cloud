@@ -1,6 +1,8 @@
 package com.cxytiandi.kittycloud.user.biz.convert;
 
 import com.cxytiandi.kittycloud.common.base.EntityConvert;
+import com.cxytiandi.kittycloud.common.base.ResponseCode;
+import com.cxytiandi.kittycloud.common.exception.BizException;
 import com.cxytiandi.kittycloud.user.biz.bo.UserBO;
 import com.cxytiandi.kittycloud.user.biz.dataobject.UserDO;
 import org.springframework.beans.BeanUtils;

@@ -37,4 +37,11 @@ public enum ArticleStatusEnum {
      */
     private String descp;
 
+    public int getStatus() {
+        return status;
+    }
+
+    public String getDescp() {
+        return descp;
+    }
 }

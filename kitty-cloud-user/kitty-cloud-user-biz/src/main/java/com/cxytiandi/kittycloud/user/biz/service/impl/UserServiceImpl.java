@@ -24,7 +24,12 @@ public class UserServiceImpl implements UserService {
         if (id == null) {
             throw new BizException(ResponseCode.PARAM_ERROR_CODE);
         }
+
         UserDO userDO = userDao.selectById(id);
+        if (userDO == null) {
+            throw new BizException(ResponseCode.NOT_FOUND_CODE);
+        }
+
         return userBoConvert.convert(userDO);
     }
 

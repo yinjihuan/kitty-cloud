@@ -2,6 +2,7 @@ package com.cxytiandi.kittycloud.article.biz.dataobject;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.cxytiandi.kittycloud.article.biz.enums.ArticleStatusEnum;
 import com.cxytiandi.kittycloud.article.biz.enums.ArticleTypeEnum;
 import com.cxytiandi.kittycloud.common.base.Entity;
@@ -16,6 +17,7 @@ import lombok.Data;
  *
  */
 @Data
+@TableName("article")
 public class ArticleDO extends Entity {
 
     /**

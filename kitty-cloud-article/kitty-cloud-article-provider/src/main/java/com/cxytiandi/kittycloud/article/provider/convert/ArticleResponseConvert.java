@@ -6,6 +6,8 @@ import com.cxytiandi.kittycloud.common.base.EntityConvert;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Component
 public class ArticleResponseConvert implements EntityConvert<ArticleBO, ArticleResponse> {
 
@@ -13,6 +15,7 @@ public class ArticleResponseConvert implements EntityConvert<ArticleBO, ArticleR
     public ArticleResponse convert(ArticleBO source) {
         ArticleResponse target = new ArticleResponse();
         BeanUtils.copyProperties(source, target);
+        target.setTags(Arrays.asList(source.getTags().split(",")));
         return target;
     }
 
