@@ -37,9 +37,9 @@ public class ArticleBO {
     private Long userId;
 
     /**
-     * 用户名
+     * 昵称
      */
-    private String username;
+    private String nickname;
 
     /**
      * 标签（多个英文逗号分隔）

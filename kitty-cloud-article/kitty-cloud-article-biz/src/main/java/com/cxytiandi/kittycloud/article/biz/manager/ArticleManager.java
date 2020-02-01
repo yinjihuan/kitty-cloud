@@ -6,6 +6,6 @@ package com.cxytiandi.kittycloud.article.biz.manager;
  */
 public interface ArticleManager {
 
-    String getUsername(Long userId);
+    String getNickname(Long userId);
 
 }

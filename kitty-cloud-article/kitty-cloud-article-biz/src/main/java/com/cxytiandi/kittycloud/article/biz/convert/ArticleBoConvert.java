@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ArticleBoConvert implements EntityConvert<ArticleDO, ArticleBO> {
 
-    public ArticleBO convertPlus(ArticleDO source, String username) {
+    public ArticleBO convertPlus(ArticleDO source, String nickname) {
         ArticleBO target = new ArticleBO();
         BeanUtils.copyProperties(source, target);
-        target.setUsername(username);
+        target.setNickname(nickname);
         return target;
     }
 

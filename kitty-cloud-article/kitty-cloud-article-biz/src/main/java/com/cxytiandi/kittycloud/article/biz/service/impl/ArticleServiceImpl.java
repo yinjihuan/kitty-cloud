@@ -52,8 +52,8 @@ public class ArticleServiceImpl implements ArticleService {
             throw new BizException(ResponseCode.NOT_FOUND_CODE);
         }
 
-        String username = articleManager.getUsername(articleDO.getUserId());
-        return articleBoConvert.convertPlus(articleDO, username);
+        String nickname = articleManager.getNickname(articleDO.getUserId());
+        return articleBoConvert.convertPlus(articleDO, nickname);
     }
 
     @Override
