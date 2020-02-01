@@ -1,6 +1,5 @@
 package com.cxytiandi.kittycloud.user.provider;
 
-import com.dianping.cat.Cat;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +19,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class KittyCloudUserProviderApp {
 
     public static void main(String[] args) {
-        Cat.initializeByDomain("kitty-cloud-user-provider");
         SpringApplication.run(KittyCloudUserProviderApp.class);
     }
 
