@@ -12,6 +12,7 @@
         <module>kitty-cloud-user</module>
         <module>kitty-cloud-common</module>
         <module>kitty-cloud-article</module>
+        <module>kitty-cloud-comment</module>
     </modules>
 
     <dependencies>
@@ -21,6 +22,16 @@
             <version>1.18.2</version>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.spring4all</groupId>
+                <artifactId>swagger-spring-boot-starter</artifactId>
+                <version>1.9.1.RELEASE</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
