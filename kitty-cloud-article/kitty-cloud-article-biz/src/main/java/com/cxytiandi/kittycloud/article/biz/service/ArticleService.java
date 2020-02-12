@@ -3,14 +3,15 @@ package com.cxytiandi.kittycloud.article.biz.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cxytiandi.kittycloud.article.biz.bo.ArticleBO;
 
-
 /**
  * 文章业务接口
  *
- * @author yinjihuan
- *
- * @about http://cxytiandi.com/about
- *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-12 20:01:04
  */
 public interface ArticleService {
 
