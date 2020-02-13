@@ -3,6 +3,16 @@ package com.cxytiandi.kittycloud.comment.biz.service;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentReplySaveParam;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
 
+/**
+ * 评论业务接口
+ *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-13 20:44:04
+ */
 public interface CommentService {
 
     /**

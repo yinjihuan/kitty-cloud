@@ -5,6 +5,17 @@ import com.cxytiandi.kittycloud.comment.api.response.CommentResponse;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import org.springframework.web.bind.annotation.*;
 
+
+/**
+ * 评论RPC/REST接口
+ *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-13 20:44:04
+ */
 public interface CommentRemoteService {
 
     /**

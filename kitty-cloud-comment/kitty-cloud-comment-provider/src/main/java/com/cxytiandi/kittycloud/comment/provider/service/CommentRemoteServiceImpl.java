@@ -7,8 +7,14 @@ import com.cxytiandi.kittycloud.common.base.ResponseData;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author: yinjihuan
- * @create: 2020-02-12 20:43
+ * 评论RPC/REST接口实现
+ *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-13 20:44:04
  */
 @RestController
 public class CommentRemoteServiceImpl implements CommentRemoteService {
