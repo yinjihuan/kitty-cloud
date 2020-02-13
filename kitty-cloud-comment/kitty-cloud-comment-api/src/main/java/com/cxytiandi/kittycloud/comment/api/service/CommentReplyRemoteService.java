@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.comment.api.service;
 
+import com.cxytiandi.kittycloud.comment.api.request.CommentReplySaveRequest;
 import com.cxytiandi.kittycloud.comment.api.request.CommentSaveRequest;
 import com.cxytiandi.kittycloud.comment.api.response.CommentReplyResponse;
 import com.cxytiandi.kittycloud.comment.api.response.CommentResponse;
@@ -25,7 +26,7 @@ public interface CommentReplyRemoteService {
      * @return 评论ID
      */
     @PostMapping("/replys")
-    ResponseData<String> saveCommentReply(@RequestBody CommentSaveRequest request);
+    ResponseData<String> saveCommentReply(@RequestBody CommentReplySaveRequest request);
 
     /**
      * 删除回复

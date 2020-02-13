@@ -2,8 +2,6 @@ package com.cxytiandi.kittycloud.comment.biz.document;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.Date;
 
 /**
@@ -17,7 +15,6 @@ import java.util.Date;
  * @时间 2020-02-13 20:44:04
  */
 @Data
-@Document(collection = "comment_reply")
 public class CommentReplyDocument {
 
     /**

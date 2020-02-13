@@ -16,7 +16,7 @@ public enum ResponseCode {
 	/** 参数错误 **/
 	PARAM_ERROR_CODE(400, "参数错误"),
 	/** 禁止访问 **/
-	FORBIDDEN(40, "禁止访问"),
+	FORBIDDEN(403, "禁止访问"),
 	/** 资源不存在 **/
 	NOT_FOUND_CODE(404, "资源不存在"),
 	/** 不支持的请求方法 **/

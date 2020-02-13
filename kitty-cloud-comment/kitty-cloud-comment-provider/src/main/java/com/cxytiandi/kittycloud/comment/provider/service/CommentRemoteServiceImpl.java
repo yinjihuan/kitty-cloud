@@ -4,6 +4,8 @@ import com.cxytiandi.kittycloud.comment.api.request.CommentSaveRequest;
 import com.cxytiandi.kittycloud.comment.api.response.CommentResponse;
 import com.cxytiandi.kittycloud.comment.api.service.CommentRemoteService;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
+import com.cxytiandi.kittycloud.common.constant.DubboConstant;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @时间 2020-02-13 20:44:04
  */
 @RestController
+@Service(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP)
 public class CommentRemoteServiceImpl implements CommentRemoteService {
 
     @Override

@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.comment.biz.document;
 
+import com.cxytiandi.kittycloud.comment.biz.enums.CommentBizTypeEnum;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -34,8 +35,9 @@ public class CommentDocument {
 
     /**
      * 评论业务类型
+     * @see CommentBizTypeEnum
      */
-    private String commentBizType;
+    private int commentBizType;
 
     /**
      * 评论业务ID

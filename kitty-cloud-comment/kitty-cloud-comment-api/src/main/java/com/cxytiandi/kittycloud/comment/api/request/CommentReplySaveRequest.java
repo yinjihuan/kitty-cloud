@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 评论Request
+ * 评论回复Request
  *
  * @作者 尹吉欢
  * @个人微信 jihuan900
@@ -15,5 +15,5 @@ import java.io.Serializable;
  * @时间 2020-02-13 20:44:04
  */
 @Data
-public class CommentSaveRequest implements Serializable {
+public class CommentReplySaveRequest implements Serializable {
 }

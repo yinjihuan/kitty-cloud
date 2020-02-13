@@ -15,6 +15,25 @@ import lombok.Data;
 @Data
 public class CommentReplySaveParam {
 
+    /**
+     * 评论ID
+     */
+    private String commentId;
+
+    /**
+     * 回复内容
+     */
+    private String content;
+
+    /**
+     * 用户ID
+     */
+    private Long userId;
+
+    /**
+     * 回复引用的用户ID
+     */
+    private Long replayRefUserId;
 
 
 }

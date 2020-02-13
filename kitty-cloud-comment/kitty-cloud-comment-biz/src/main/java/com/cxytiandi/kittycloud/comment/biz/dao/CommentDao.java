@@ -1,5 +1,9 @@
 package com.cxytiandi.kittycloud.comment.biz.dao;
 
+import com.cxytiandi.kittycloud.comment.biz.document.CommentDocument;
+import com.cxytiandi.kittycloud.comment.biz.document.CommentReplyDocument;
+import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
+
 /**
  * 评论DAO
  *
@@ -11,5 +15,20 @@ package com.cxytiandi.kittycloud.comment.biz.dao;
  * @时间 2020-02-13 20:44:04
  */
 public interface CommentDao {
+
+    /**
+     * 保存评论
+     * @param commentDocument 评论参数
+     * @return 评论ID
+     */
+    String saveComment(CommentDocument commentDocument);
+
+    /**
+     * 保存评论回复
+     * @param commentId 评论ID
+     * @param commentReplyDocument 回复参数
+     * @return 回复ID
+     */
+    String saveCommentReply(String commentId, CommentReplyDocument commentReplyDocument);
 
 }
