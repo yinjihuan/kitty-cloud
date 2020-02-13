@@ -6,11 +6,13 @@ import java.util.List;
 
 /**
  * REST API 返回数据格式类
- * 
- * @author yinjihuan
- * 
- * @about http://cxytiandi.com/about
  *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-13 20:44:04
  */
 public class ResponseData<T> implements Serializable {
 	private int code = 200;
