@@ -10,6 +10,16 @@ import com.cxytiandi.kittycloud.user.biz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * 用户业务接口实现
+ *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-13 20:44:04
+ */
 @Service
 public class UserServiceImpl implements UserService {
 

@@ -11,10 +11,12 @@ import lombok.Data;
 /**
  * 用户DO
  *
- * @author yinjihuan
- *
- * @about http://cxytiandi.com/about
- *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-13 20:44:04
  */
 @Data
 @TableName("user")

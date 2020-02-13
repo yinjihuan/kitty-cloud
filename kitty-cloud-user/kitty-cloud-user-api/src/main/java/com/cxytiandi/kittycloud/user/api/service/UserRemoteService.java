@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
- * 用户接口
+ * 用户PRC/REST接口
  *
- * @author yinjihuan
- *
- * @about http://cxytiandi.com/about
- *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-13 20:44:04
  */
 @FeignClient(name = "kitty-cloud-user-provider")
 public interface UserRemoteService {

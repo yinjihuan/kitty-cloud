@@ -5,8 +5,14 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author: yinjihuan
- * @create: 2019-12-26 21:52
+ * 用户Response
+ *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-13 20:44:04
  */
 @Data
 public class UserResponse implements Serializable {

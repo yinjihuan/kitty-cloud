@@ -13,6 +13,16 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 用户PRC/REST接口实现
+ *
+ * @作者 尹吉欢
+ * @个人微信 jihuan900
+ * @微信公众号 猿天地
+ * @GitHub https://github.com/yinjihuan
+ * @作者介绍 http://cxytiandi.com/about
+ * @时间 2020-02-13 20:44:04
+ */
 @Service(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP)
 @RestController
 public class UserRemoteServiceImpl implements UserRemoteService {
