@@ -1,11 +1,15 @@
 package com.cxytiandi.kittycloud.comment.provider.service;
 
 import com.cxytiandi.kittycloud.comment.api.request.CommentSaveRequest;
-import com.cxytiandi.kittycloud.comment.api.response.CommentResponse;
 import com.cxytiandi.kittycloud.comment.api.service.CommentRemoteService;
+import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
+import com.cxytiandi.kittycloud.comment.biz.service.CommentService;
+import com.cxytiandi.kittycloud.comment.provider.convert.CommentSaveParamConvert;
+import com.cxytiandi.kittycloud.common.base.Response;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import com.cxytiandi.kittycloud.common.constant.DubboConstant;
 import org.apache.dubbo.config.annotation.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,19 +26,21 @@ import org.springframework.web.bind.annotation.RestController;
 @Service(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP)
 public class CommentRemoteServiceImpl implements CommentRemoteService {
 
+    @Autowired
+    private CommentService commentService;
+
+    @Autowired
+    private CommentSaveParamConvert commentSaveParamConvert;
+
     @Override
     public ResponseData<String> saveComment(CommentSaveRequest request) {
-        return null;
+        CommentSaveParam saveParam = commentSaveParamConvert.convert(request);
+        return Response.ok(commentService.saveComment(saveParam));
     }
 
     @Override
     public ResponseData<Boolean> removeComment(String id) {
-        return null;
-    }
-
-    @Override
-    public ResponseData<CommentResponse> getComment(String id) {
-        return null;
+        return Response.ok(commentService.removeComment(id));
     }
 
 }

@@ -24,6 +24,13 @@ public interface CommentDao {
     String saveComment(CommentDocument commentDocument);
 
     /**
+     * 删除评论（包括回复）
+     * @param id
+     * @return
+     */
+    boolean removeComment(String id);
+
+    /**
      * 保存评论回复
      * @param commentId 评论ID
      * @param commentReplyDocument 回复参数

@@ -8,8 +8,8 @@ import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
 import com.cxytiandi.kittycloud.comment.biz.service.CommentService;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.exception.BizException;
-import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 /**
@@ -43,6 +43,14 @@ public class CommentServiceImpl implements CommentService {
         }
 
         return commentDao.saveComment(commentDocumentConvert.convert(param));
+    }
+
+    @Override
+    public boolean removeComment(String id) {
+        if (!StringUtils.hasText(id)) {
+            return false;
+        }
+        return commentDao.removeComment(id);
     }
 
     @Override

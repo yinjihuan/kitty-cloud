@@ -131,7 +131,7 @@ public class ResponseData<T> implements Serializable {
 
 	public void addError(String name, String message) {
 		if (this.errors == null) {
-			this.errors = new ArrayList<Error>();
+			this.errors = new ArrayList<>();
 		}
 		this.errors.add(new Error(name + "\t" + message));
 	}

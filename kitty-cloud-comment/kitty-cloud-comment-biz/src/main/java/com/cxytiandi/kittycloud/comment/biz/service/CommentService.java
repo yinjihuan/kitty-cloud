@@ -23,6 +23,13 @@ public interface CommentService {
     String saveComment(CommentSaveParam param);
 
     /**
+     * 删除评论（包括回复）
+     * @param id
+     * @return
+     */
+    boolean removeComment(String id);
+
+    /**
      * 保存评论回复
      * @param param 评论回复参数
      * @return 回复ID

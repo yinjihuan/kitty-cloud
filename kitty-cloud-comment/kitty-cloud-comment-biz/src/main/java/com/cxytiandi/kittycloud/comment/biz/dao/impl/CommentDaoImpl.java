@@ -3,6 +3,7 @@ package com.cxytiandi.kittycloud.comment.biz.dao.impl;
 import com.cxytiandi.kittycloud.comment.biz.dao.CommentDao;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentDocument;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentReplyDocument;
+import com.mongodb.client.result.DeleteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -30,6 +31,12 @@ public class CommentDaoImpl implements CommentDao {
     public String saveComment(CommentDocument commentDocument) {
         mongoTemplate.save(commentDocument);
         return commentDocument.getId();
+    }
+
+    @Override
+    public boolean removeComment(String id) {
+        DeleteResult deleteResult = mongoTemplate.remove(Query.query(Criteria.where("id").is(id)), CommentDocument.class);
+        return deleteResult.getDeletedCount() > 0;
     }
 
     @Override
