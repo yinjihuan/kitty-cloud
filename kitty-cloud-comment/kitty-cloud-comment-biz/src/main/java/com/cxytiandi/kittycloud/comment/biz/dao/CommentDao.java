@@ -38,4 +38,18 @@ public interface CommentDao {
      */
     String saveCommentReply(String commentId, CommentReplyDocument commentReplyDocument);
 
+    /**
+     * 获取评论
+     * @param id 评论ID
+     * @return
+     */
+    CommentDocument getComment(String id);
+
+    /**
+     * 删除评论回复
+     * @param replyId 回复ID
+     * @return
+     */
+    boolean removeCommentReply(String replyId);
+
 }

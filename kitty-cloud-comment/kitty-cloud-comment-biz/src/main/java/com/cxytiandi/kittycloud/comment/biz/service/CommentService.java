@@ -36,4 +36,11 @@ public interface CommentService {
      */
     String saveCommentReply(CommentReplySaveParam param);
 
+    /**
+     * 删除评论回复
+     * @param replyId 回复ID
+     * @return
+     */
+    boolean removeCommentReply(String replyId);
+
 }

@@ -3,13 +3,18 @@ package com.cxytiandi.kittycloud.comment.biz.dao.impl;
 import com.cxytiandi.kittycloud.comment.biz.dao.CommentDao;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentDocument;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentReplyDocument;
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
 
 /**
  * 评论DAO实现
@@ -29,6 +34,9 @@ public class CommentDaoImpl implements CommentDao {
 
     @Override
     public String saveComment(CommentDocument commentDocument) {
+        Date currentTime = new Date();
+        commentDocument.setAddTime(currentTime);
+        commentDocument.setUpdateTime(currentTime);
         mongoTemplate.save(commentDocument);
         return commentDocument.getId();
     }
@@ -41,9 +49,32 @@ public class CommentDaoImpl implements CommentDao {
 
     @Override
     public String saveCommentReply(String commentId, CommentReplyDocument commentReplyDocument) {
+        String replyId = new ObjectId().toString();
+        Date currentTime = new Date();
+        commentReplyDocument.setId(replyId);
+        commentReplyDocument.setAddTime(currentTime);
+        commentReplyDocument.setUpdateTime(currentTime);
+
         Query query = Query.query(Criteria.where("id").is(commentId));
         Update update = new Update().addToSet("replys", commentReplyDocument);
         mongoTemplate.updateFirst(query, update, CommentDocument.class);
-        return null;
+        return replyId;
+    }
+
+    @Override
+    public CommentDocument getComment(String id) {
+        return mongoTemplate.findOne(Query.query(Criteria.where("id").is(id)), CommentDocument.class);
+    }
+
+    @Override
+    public boolean removeCommentReply(String replyId) {
+        Query query = Query.query(Criteria.where("replys._id").is(replyId));
+
+        BasicDBObject basicDBObject = new BasicDBObject();
+        basicDBObject.append("_id", replyId);
+        Update update = new Update().pull("replys", basicDBObject);
+
+        UpdateResult updateResult = mongoTemplate.updateFirst(query, update, CommentDocument.class);
+        return updateResult.getModifiedCount() > 0;
     }
 }

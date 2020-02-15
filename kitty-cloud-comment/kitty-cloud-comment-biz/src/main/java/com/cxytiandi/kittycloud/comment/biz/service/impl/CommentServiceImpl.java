@@ -1,7 +1,9 @@
 package com.cxytiandi.kittycloud.comment.biz.service.impl;
 
 import com.cxytiandi.kittycloud.comment.biz.convert.CommentDocumentConvert;
+import com.cxytiandi.kittycloud.comment.biz.convert.CommentReplyDocumentConvert;
 import com.cxytiandi.kittycloud.comment.biz.dao.CommentDao;
+import com.cxytiandi.kittycloud.comment.biz.document.CommentDocument;
 import com.cxytiandi.kittycloud.comment.biz.enums.CommentBizTypeEnum;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentReplySaveParam;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
@@ -30,6 +32,9 @@ public class CommentServiceImpl implements CommentService {
 
     @Autowired
     private CommentDocumentConvert commentDocumentConvert;
+
+    @Autowired
+    private CommentReplyDocumentConvert commentReplyDocumentConvert;
 
     @Override
     public String saveComment(CommentSaveParam param) {
@@ -60,8 +65,17 @@ public class CommentServiceImpl implements CommentService {
             throw new BizException(ResponseCode.PARAM_ERROR_CODE);
         }
 
+        CommentDocument comment = commentDao.getComment(param.getCommentId());
+        if (comment == null) {
+            throw new BizException(ResponseCode.NOT_FOUND_CODE, "评论不存在");
+        }
 
-        return null;
+        return commentDao.saveCommentReply(param.getCommentId(), commentReplyDocumentConvert.convert(param));
+    }
+
+    @Override
+    public boolean removeCommentReply(String replyId) {
+        return commentDao.removeCommentReply(replyId);
     }
 
 }

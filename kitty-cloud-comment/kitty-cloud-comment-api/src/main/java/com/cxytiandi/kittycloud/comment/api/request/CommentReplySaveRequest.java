@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.comment.api.request;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,5 +16,27 @@ import java.io.Serializable;
  * @时间 2020-02-13 20:44:04
  */
 @Data
+@Builder
 public class CommentReplySaveRequest implements Serializable {
+
+    /**
+     * 评论ID
+     */
+    private String commentId;
+
+    /**
+     * 回复内容
+     */
+    private String content;
+
+    /**
+     * 用户ID
+     */
+    private Long userId;
+
+    /**
+     * 回复引用的用户ID
+     */
+    private Long replayRefUserId;
+
 }
