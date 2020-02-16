@@ -2,7 +2,10 @@ package com.cxytiandi.kittycloud.comment.biz.dao;
 
 import com.cxytiandi.kittycloud.comment.biz.document.CommentDocument;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentReplyDocument;
+import com.cxytiandi.kittycloud.comment.biz.param.CommentQueryParam;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
+
+import java.util.List;
 
 /**
  * 评论DAO
@@ -51,5 +54,19 @@ public interface CommentDao {
      * @return
      */
     boolean removeCommentReply(String replyId);
+
+    /**
+     * 查询评论的数量
+     * @param param
+     * @return
+     */
+    long countComment(CommentQueryParam param);
+
+    /**
+     * 查询评论信息
+     * @param param
+     * @return
+     */
+    List<CommentDocument> listComments(CommentQueryParam param);
 
 }

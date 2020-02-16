@@ -1,6 +1,9 @@
 package com.cxytiandi.kittycloud.comment.api.service;
 
+import com.cxytiandi.kittycloud.comment.api.request.CommentQueryRequest;
 import com.cxytiandi.kittycloud.comment.api.request.CommentSaveRequest;
+import com.cxytiandi.kittycloud.comment.api.response.CommentResponse;
+import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +35,13 @@ public interface CommentRemoteService {
      */
     @DeleteMapping("/comments/{id}")
     ResponseData<Boolean> removeComment(@PathVariable String id);
+
+    /**
+     * 分页查询评论
+     * @param request
+     * @return
+     */
+    @GetMapping("/comments")
+    ResponseData<Page<CommentResponse>> listComments(CommentQueryRequest request);
 
 }

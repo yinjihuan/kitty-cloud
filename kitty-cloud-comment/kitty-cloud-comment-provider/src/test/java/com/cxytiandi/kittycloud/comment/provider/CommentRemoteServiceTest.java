@@ -1,8 +1,11 @@
 package com.cxytiandi.kittycloud.comment.provider;
 
+import com.cxytiandi.kittycloud.comment.api.request.CommentQueryRequest;
 import com.cxytiandi.kittycloud.comment.api.request.CommentSaveRequest;
+import com.cxytiandi.kittycloud.comment.api.response.CommentResponse;
 import com.cxytiandi.kittycloud.comment.api.service.CommentRemoteService;
 import com.cxytiandi.kittycloud.comment.biz.enums.CommentBizTypeEnum;
+import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import org.junit.Assert;
 import org.junit.Test;
@@ -55,4 +58,15 @@ public class CommentRemoteServiceTest {
         Assert.assertTrue(removeCommentResp.isSuccess() && removeCommentResp.getData());
     }
 
+    @Test
+    public void listComments() {
+        CommentQueryRequest request = CommentQueryRequest.builder()
+                .commentBizId("1")
+                .commentBizType(CommentBizTypeEnum.ARTICLE.getType())
+                .page(1)
+                .pageSize(10)
+                .build();
+        ResponseData<Page<CommentResponse>> listCommentResp = commentRemoteService.listComments(request);
+        Assert.assertTrue(listCommentResp.isSuccess());
+    }
 }

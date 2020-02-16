@@ -1,7 +1,10 @@
 package com.cxytiandi.kittycloud.comment.biz.service;
 
+import com.cxytiandi.kittycloud.comment.biz.bo.CommentBO;
+import com.cxytiandi.kittycloud.comment.biz.param.CommentQueryParam;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentReplySaveParam;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
+import com.cxytiandi.kittycloud.common.base.Page;
 
 /**
  * 评论业务接口
@@ -42,5 +45,12 @@ public interface CommentService {
      * @return
      */
     boolean removeCommentReply(String replyId);
+
+    /**
+     * 分页查询评论
+     * @param param
+     * @return
+     */
+    Page<CommentBO> listComments(CommentQueryParam param);
 
 }

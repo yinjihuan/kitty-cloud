@@ -3,11 +3,14 @@ package com.cxytiandi.kittycloud.comment.biz.dao.impl;
 import com.cxytiandi.kittycloud.comment.biz.dao.CommentDao;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentDocument;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentReplyDocument;
+import com.cxytiandi.kittycloud.comment.biz.param.CommentQueryParam;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -15,6 +18,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 评论DAO实现
@@ -76,5 +80,22 @@ public class CommentDaoImpl implements CommentDao {
 
         UpdateResult updateResult = mongoTemplate.updateFirst(query, update, CommentDocument.class);
         return updateResult.getModifiedCount() > 0;
+    }
+
+    @Override
+    public long countComment(CommentQueryParam param) {
+        Query query = Query.query(
+                Criteria.where("commentBizType").is(param.getCommentBizType())
+                        .and("commentBizId").is(param.getCommentBizId()));
+        return mongoTemplate.count(query, CommentDocument.class);
+    }
+
+    @Override
+    public List<CommentDocument> listComments(CommentQueryParam param) {
+        Query query = Query.query(
+                Criteria.where("commentBizType").is(param.getCommentBizType())
+                        .and("commentBizId").is(param.getCommentBizId()));
+        query.with(PageRequest.of(param.getPage() - 1, param.getPageSize(), new Sort(Sort.Direction.DESC, "id")));
+        return mongoTemplate.find(query, CommentDocument.class);
     }
 }
