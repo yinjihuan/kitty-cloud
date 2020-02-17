@@ -1,5 +1,8 @@
 package com.cxytiandi.kittycloud.user.provider;
 
+import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
+import com.alicp.jetcache.anno.config.EnableMethodCache;
+import com.spring4all.swagger.EnableSwagger2Doc;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +20,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @MapperScan("com.cxytiandi.kittycloud.user.biz.dao")
 @EnableDiscoveryClient
-@SpringBootApplication(scanBasePackages = {"com.cxytiandi"})
+@EnableSwagger2Doc
+@EnableCreateCacheAnnotation
+@EnableMethodCache(basePackages = "com.cxytiandi.kittycloud.user.biz.manager")
+@SpringBootApplication(scanBasePackages = {"com.cxytiandi.kittycloud.user","com.cxytiandi.kitty.web.config"})
 public class KittyCloudUserProviderApp {
 
     public static void main(String[] args) {

@@ -25,23 +25,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.cxytiandi</groupId>
-            <artifactId>kitty-register-nacos</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.cxytiandi</groupId>
-            <artifactId>kitty-servicecall-dubbo</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.cxytiandi</groupId>
-            <artifactId>kitty-spring-cloud-starter-cat</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
 </project>
