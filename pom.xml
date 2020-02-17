@@ -72,6 +72,11 @@
                 <artifactId>kitty-spring-cloud-starter-dubbo</artifactId>
                 <version>${kitty.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-mongodb</artifactId>
+                <version>${kitty.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
