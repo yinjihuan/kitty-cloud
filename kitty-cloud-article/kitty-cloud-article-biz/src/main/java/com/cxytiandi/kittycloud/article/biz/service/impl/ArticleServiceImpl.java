@@ -2,7 +2,7 @@ package com.cxytiandi.kittycloud.article.biz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.article.biz.bo.ArticleBO;
 import com.cxytiandi.kittycloud.article.biz.convert.ArticleBoConvert;
 import com.cxytiandi.kittycloud.article.biz.dao.ArticleDao;
@@ -14,6 +14,7 @@ import com.cxytiandi.kittycloud.common.exception.BizException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -59,12 +60,15 @@ public class ArticleServiceImpl implements ArticleService {
         QueryWrapper<ArticleDO> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByDesc("heat");
 
-        Page queryPage = new Page<>(page, pageSize);
+        com.baomidou.mybatisplus.extension.plugins.pagination.Page queryPage = new com.baomidou.mybatisplus.extension.plugins.pagination.Page<>(page, pageSize);
 
         IPage<ArticleDO> articleDoPage = articleDao.selectPage(queryPage, queryWrapper);
 
-        Page pageResponse = new Page(page, pageSize, articleDoPage.getTotal());
-        pageResponse.setRecords(articleDoPage.getRecords().stream().map(articleBoConvert::convert).collect(Collectors.toList()));
+        List<ArticleBO> articleBos = articleDoPage.getRecords().stream().map(r -> {
+            String nickname = articleManager.getNickname(r.getUserId());
+            return articleBoConvert.convertPlus(r, nickname);
+        }).collect(Collectors.toList());
+        Page pageResponse = new Page(Page.page2Start(page, pageSize), pageSize, articleBos, articleDoPage.getTotal());
 
         return pageResponse;
     }
@@ -74,12 +78,15 @@ public class ArticleServiceImpl implements ArticleService {
         QueryWrapper<ArticleDO> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByDesc("heat");
 
-        Page queryPage = new Page<>(page, pageSize);
+        com.baomidou.mybatisplus.extension.plugins.pagination.Page queryPage = new com.baomidou.mybatisplus.extension.plugins.pagination.Page<>(page, pageSize);
 
         IPage<ArticleDO> articleDoPage = articleDao.selectPage(queryPage, queryWrapper);
 
-        Page pageResponse = new Page(page, pageSize, articleDoPage.getTotal());
-        pageResponse.setRecords(articleDoPage.getRecords().stream().map(articleBoConvert::convert).collect(Collectors.toList()));
+        List<ArticleBO> articleBos = articleDoPage.getRecords().stream().map( r -> {
+            String nickname = articleManager.getNickname(r.getUserId());
+            return articleBoConvert.convertPlus(r, nickname);
+        }).collect(Collectors.toList());
+        Page pageResponse = new Page(Page.page2Start(page, pageSize), pageSize, articleBos, articleDoPage.getTotal());
 
         return pageResponse;
     }

@@ -23,7 +23,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @EnableCreateCacheAnnotation
 @EnableMethodCache(basePackages = "com.cxytiandi.kittycloud.article.biz.manager")
-@SpringBootApplication(scanBasePackages = {"com.cxytiandi"})
+@SpringBootApplication(scanBasePackages = {"com.cxytiandi.kittycloud.article","com.cxytiandi.kitty.web.config"})
 public class KittyCloudArticleProviderApp {
     public static void main(String[] args) {
         SpringApplication.run(KittyCloudArticleProviderApp.class);

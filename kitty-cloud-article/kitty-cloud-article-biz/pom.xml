@@ -14,28 +14,38 @@
     <dependencies>
         <dependency>
             <groupId>com.cxytiandi</groupId>
-            <artifactId>kitty-db-mysql-mybatis</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.cxytiandi</groupId>
-            <artifactId>kitty-config-nacos</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.cxytiandi</groupId>
-            <artifactId>kitty-servicecall-dubbo</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.cxytiandi</groupId>
             <artifactId>kitty-cloud-user-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>com.cxytiandi</groupId>
-            <artifactId>kitty-db-redis-jetcache</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>kitty-spring-cloud-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-nacos</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-jetcache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-cat</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-dubbo</artifactId>
         </dependency>
     </dependencies>
 

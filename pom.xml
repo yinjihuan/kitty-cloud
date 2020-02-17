@@ -15,6 +15,11 @@
         <module>kitty-cloud-comment</module>
     </modules>
 
+    <properties>
+        <kitty.version>1.0-SNAPSHOT</kitty.version>
+        <swagger.version>1.9.1.RELEASE</swagger.version>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -35,7 +40,37 @@
             <dependency>
                 <groupId>com.spring4all</groupId>
                 <artifactId>swagger-spring-boot-starter</artifactId>
-                <version>1.9.1.RELEASE</version>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-web</artifactId>
+                <version>${kitty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-cat</artifactId>
+                <version>${kitty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-jetcache</artifactId>
+                <version>${kitty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-mybatis</artifactId>
+                <version>${kitty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-nacos</artifactId>
+                <version>${kitty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-dubbo</artifactId>
+                <version>${kitty.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
