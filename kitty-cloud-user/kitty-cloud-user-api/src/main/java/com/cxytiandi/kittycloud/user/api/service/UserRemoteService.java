@@ -1,6 +1,7 @@
 package com.cxytiandi.kittycloud.user.api.service;
 
 import com.cxytiandi.kittycloud.common.base.ResponseData;
+import com.cxytiandi.kittycloud.user.api.fallback.UserRemoteServiceFallbackFactory;
 import com.cxytiandi.kittycloud.user.api.request.UserLoginRequest;
 import com.cxytiandi.kittycloud.user.api.response.UserResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-13 20:44:04
  */
-@FeignClient(name = "kitty-cloud-user-provider")
+@FeignClient(name = "kitty-cloud-user-provider", fallbackFactory = UserRemoteServiceFallbackFactory.class)
 public interface UserRemoteService {
 
     /**

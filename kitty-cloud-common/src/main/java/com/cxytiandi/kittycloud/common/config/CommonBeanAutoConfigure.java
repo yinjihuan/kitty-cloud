@@ -1,8 +1,12 @@
 package com.cxytiandi.kittycloud.common.config;
 
+import com.alibaba.csp.sentinel.adapter.servlet.callback.WebCallbackManager;
 import com.cxytiandi.kittycloud.common.exception.GlobalExceptionHandler;
+import com.cxytiandi.kittycloud.common.handler.KittyCloudUrlBlockHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Common中的自动配置
@@ -16,6 +20,11 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class CommonBeanAutoConfigure {
+
+    @PostConstruct
+    public void init() {
+        WebCallbackManager.setUrlBlockHandler(new KittyCloudUrlBlockHandler());
+    }
 
     @Bean
     public GlobalExceptionHandler globalExceptionHandler() {

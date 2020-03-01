@@ -47,5 +47,10 @@
             <groupId>com.cxytiandi</groupId>
             <artifactId>kitty-spring-cloud-starter-mongodb</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-sentinel</artifactId>
+        </dependency>
     </dependencies>
 </project>

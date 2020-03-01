@@ -1,6 +1,7 @@
 package com.cxytiandi.kittycloud.user.api.request;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
  * @时间 2020-02-13 20:44:04
  */
 @Data
+@ToString
 public class UserLoginRequest implements Serializable {
 
     /**

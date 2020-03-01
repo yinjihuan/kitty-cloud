@@ -3,8 +3,10 @@ package com.cxytiandi.kittycloud.comment.biz.manager.impl;
 import com.alicp.jetcache.anno.Cached;
 import com.cxytiandi.kittycloud.comment.biz.manager.CommentManager;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
+import com.cxytiandi.kittycloud.common.constant.DubboConstant;
 import com.cxytiandi.kittycloud.user.api.response.UserResponse;
 import com.cxytiandi.kittycloud.user.api.service.UserRemoteService;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,10 +27,10 @@ public class CommentManagerImpl implements CommentManager {
 
     // @Reference dubbo调用， @Autowired Feign调用
     @Autowired
-    // @Reference(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP)
+    //@Reference(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP, check = false, mock = DubboConstant.MOCK)
     private UserRemoteService userRemoteService;
 
-    @Cached(name = "CommentManagerImpl:getNickname:", key = "#userId", expire = 1, timeUnit = TimeUnit.DAYS)
+    //@Cached(name = "CommentManagerImpl:getNickname:", key = "#userId", expire = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public String getNickname(Long userId) {
         ResponseData<UserResponse> user = userRemoteService.getUser(userId);

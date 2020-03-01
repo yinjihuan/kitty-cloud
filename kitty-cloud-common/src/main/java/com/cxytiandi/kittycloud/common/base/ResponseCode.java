@@ -21,8 +21,13 @@ public enum ResponseCode {
 	NOT_FOUND_CODE(404, "资源不存在"),
 	/** 不支持的请求方法 **/
 	REQUEST_METHOD_NOT_SUPPORTED_CODE(405, "不支持的请求方法"),
+	/** 服务限流 **/
+	SERVER_LIMIT_CODE(429, "服务限流"),
 	/** 服务器错误 **/
 	SERVER_ERROR_CODE(500, "服务器错误"),
+	/** 服务降级 **/
+	SERVER_DOWNGRADE_CODE(700, "服务降级"),
+
 
 	/** 用户服务 **/
 	USER_EXCEPTION(10001001, "")

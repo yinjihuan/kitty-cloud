@@ -14,5 +14,6 @@ public class DubboConstant {
 
     public static final String VERSION_V100 = "1.0.0";
     public static final String DEFAULT_GROUP = "default";
+    public static final String MOCK = "true";
 
 }
