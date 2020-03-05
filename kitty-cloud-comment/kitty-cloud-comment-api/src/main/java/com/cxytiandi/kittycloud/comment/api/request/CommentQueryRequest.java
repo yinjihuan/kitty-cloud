@@ -1,9 +1,6 @@
 package com.cxytiandi.kittycloud.comment.api.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -17,6 +14,7 @@ import java.io.Serializable;
  */
 @Data
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommentQueryRequest implements Serializable {

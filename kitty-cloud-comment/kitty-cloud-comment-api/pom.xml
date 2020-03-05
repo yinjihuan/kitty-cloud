@@ -17,9 +17,15 @@
             <artifactId>kitty-spring-cloud-starter-web</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>com.spring4all</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-feign</artifactId>
         </dependency>
     </dependencies>
 
