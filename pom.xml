@@ -19,6 +19,7 @@
     <properties>
         <kitty.version>1.0-SNAPSHOT</kitty.version>
         <swagger.version>1.9.1.RELEASE</swagger.version>
+        <lombok.version>1.18.2</lombok.version>
     </properties>
 
     <parent>
@@ -32,7 +33,12 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-sleuth</artifactId>
+            <version>${kitty.version}</version>
         </dependency>
     </dependencies>
 
