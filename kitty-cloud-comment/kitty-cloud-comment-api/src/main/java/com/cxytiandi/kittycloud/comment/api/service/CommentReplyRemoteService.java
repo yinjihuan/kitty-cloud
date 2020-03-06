@@ -1,7 +1,9 @@
 package com.cxytiandi.kittycloud.comment.api.service;
 
+import com.cxytiandi.kittycloud.comment.api.fallback.CommentReplyRemoteServiceFallbackFactory;
 import com.cxytiandi.kittycloud.comment.api.request.CommentReplySaveRequest;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-13 20:44:04
  */
+@FeignClient(name = "kitty-cloud-comment-provider", contextId = "CommentReplyRemoteService", fallbackFactory = CommentReplyRemoteServiceFallbackFactory.class)
 public interface CommentReplyRemoteService {
 
     /**

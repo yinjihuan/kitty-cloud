@@ -16,7 +16,7 @@ import javax.annotation.PostConstruct;
  * @微信公众号 猿天地
  * @GitHub https://github.com/yinjihuan
  * @作者介绍 http://cxytiandi.com/about
- * @时间 2020-02-17 16:47
+ * @时间 2020-02-17 20:47
  */
 @Configuration
 public class CommonBeanAutoConfigure {

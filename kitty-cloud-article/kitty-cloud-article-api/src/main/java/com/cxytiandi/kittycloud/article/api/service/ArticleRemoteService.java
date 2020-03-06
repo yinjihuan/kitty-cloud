@@ -1,8 +1,10 @@
 package com.cxytiandi.kittycloud.article.api.service;
 
+import com.cxytiandi.kittycloud.article.api.fallback.ArticleRemoteServiceFallbackFactory;
 import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
 import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-12 20:01:04
  */
+@FeignClient(name = "kitty-cloud-comment-provider", fallbackFactory = ArticleRemoteServiceFallbackFactory.class)
 public interface ArticleRemoteService {
 
     /**
