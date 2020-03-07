@@ -97,6 +97,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Page<CommentBO> listComments(CommentQueryParam param) {
+        log.info("查询评论参数 [{}]", param);
         if (!StringUtils.hasText(param.getCommentBizId()) || param.getPage() <= 0
                 || param.getPageSize() <= 0 || param.getPageSize() > 20) {
             throw new BizException(ResponseCode.PARAM_ERROR_CODE);
@@ -108,7 +109,7 @@ public class CommentServiceImpl implements CommentService {
 
         long total = commentDao.countComment(param);
         List<CommentDocument> commentDocuments = commentDao.listComments(param);
-        List<CommentBO> commentBOList = commentDocuments.parallelStream().map(c -> {
+        List<CommentBO> commentBOList = commentDocuments.stream().map(c -> {
             String nickname = commentManager.getNickname(c.getUserId());
             // todo: 回复数量在比较多的情况下直接查询出来性能不好，后期可以单独维护一个回复数量的字段或者使用aggregate查询
             List<CommentReplyDocument> replys = commentDao.getComment(c.getId()).getReplys();
