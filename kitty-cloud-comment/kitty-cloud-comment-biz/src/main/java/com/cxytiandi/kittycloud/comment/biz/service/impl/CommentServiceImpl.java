@@ -6,6 +6,7 @@ import com.cxytiandi.kittycloud.comment.biz.convert.CommentDocumentConvert;
 import com.cxytiandi.kittycloud.comment.biz.convert.CommentReplyDocumentConvert;
 import com.cxytiandi.kittycloud.comment.biz.dao.CommentDao;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentDocument;
+import com.cxytiandi.kittycloud.comment.biz.document.CommentReplyDocument;
 import com.cxytiandi.kittycloud.comment.biz.enums.CommentBizTypeEnum;
 import com.cxytiandi.kittycloud.comment.biz.manager.CommentManager;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentQueryParam;
@@ -15,6 +16,7 @@ import com.cxytiandi.kittycloud.comment.biz.service.CommentService;
 import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.exception.BizException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -32,6 +34,7 @@ import java.util.stream.Collectors;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-13 21:45
  */
+@Slf4j
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -108,7 +111,8 @@ public class CommentServiceImpl implements CommentService {
         List<CommentBO> commentBOList = commentDocuments.parallelStream().map(c -> {
             String nickname = commentManager.getNickname(c.getUserId());
             // todo: 回复数量在比较多的情况下直接查询出来性能不好，后期可以单独维护一个回复数量的字段或者使用aggregate查询
-            int replyCount = commentDao.getComment(c.getId()).getReplys().size();
+            List<CommentReplyDocument> replys = commentDao.getComment(c.getId()).getReplys();
+            int replyCount = replys == null ? 0 : replys.size();
             return commentBOConvert.convertPlus(c, nickname, replyCount);
         }).collect(Collectors.toList());
 

@@ -26,9 +26,9 @@ import java.util.concurrent.TimeUnit;
 public class CommentManagerImpl implements CommentManager {
 
     // @Reference dubbo调用， @Autowired Feign调用
-    //@Autowired
+    @Autowired
     // mock = DubboConstant.MOCK 开启Dubbo默认回退
-    @Reference(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP, check = false, mock = "com.cxytiandi.kittycloud.comment.biz.manager.fallback.dubbo.CustomUserRemoteServiceMock")
+    //@Reference(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP, check = false, mock = "com.cxytiandi.kittycloud.comment.biz.manager.fallback.dubbo.CustomUserRemoteServiceMock")
     private UserRemoteService userRemoteService;
 
     //@Cached(name = "CommentManagerImpl:getNickname:", key = "#userId", expire = 1, timeUnit = TimeUnit.DAYS)

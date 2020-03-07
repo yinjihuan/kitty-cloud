@@ -3,7 +3,7 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
     <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
 
-    <springProperty name="APP_NAME" source="spring.application.name" />
+    <property name="APP_NAME" value="kitty-cloud-comment-provider" />
     <property name="APP_HOME" value="/Users/yinjihuan/Downloads"/>
     <property name="LOG_HOME_PATH" value="${APP_HOME}/logs"/>
     <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}" />
@@ -28,11 +28,42 @@
 
     <appender name="CatAppender" class="com.dianping.cat.logback.CatLogbackAppender"></appender>
 
+    <appender name="Logstash" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME_PATH}/${APP_NAME}.json</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME_PATH}/${APP_NAME}.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                        "severity": "%level",
+                        "service": "${APP_NAME:-}",
+                        "trace": "%X{X-B3-TraceId:-}",
+                        "span": "%X{X-B3-SpanId:-}",
+                        "parent": "%X{X-B3-ParentSpanId:-}",
+                        "exportable": "%X{X-Span-Export:-}",
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "class": "%logger{40}",
+                        "rest": "%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
 
     <root level="INFO">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="DEBUG_FILE_APPENDER" />
         <appender-ref ref="CatAppender" />
+        <appender-ref ref="Logstash" />
     </root>
 
 </configuration>

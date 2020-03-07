@@ -21,7 +21,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @EnableCreateCacheAnnotation
 @EnableMethodCache(basePackages = "com.cxytiandi.kittycloud.comment.biz.manager")
-@SpringBootApplication(scanBasePackages = {"com.cxytiandi"})
+@SpringBootApplication(scanBasePackages = {"com.cxytiandi.kittycloud.comment","com.cxytiandi.kitty.web.config"})
 public class KittyCloudCommentProviderApp {
     public static void main(String[] args) {
         SpringApplication.run(KittyCloudCommentProviderApp.class);

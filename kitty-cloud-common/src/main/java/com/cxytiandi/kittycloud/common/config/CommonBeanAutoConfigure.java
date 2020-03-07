@@ -1,6 +1,7 @@
 package com.cxytiandi.kittycloud.common.config;
 
 import com.alibaba.csp.sentinel.adapter.servlet.callback.WebCallbackManager;
+import com.cxytiandi.kittycloud.common.aop.TraceIdAddResponseAspect;
 import com.cxytiandi.kittycloud.common.exception.GlobalExceptionHandler;
 import com.cxytiandi.kittycloud.common.handler.KittyCloudUrlBlockHandler;
 import org.springframework.context.annotation.Bean;
@@ -31,4 +32,8 @@ public class CommonBeanAutoConfigure {
         return new GlobalExceptionHandler();
     }
 
+    @Bean
+    public TraceIdAddResponseAspect traceIdAddResponseAspect() {
+        return new TraceIdAddResponseAspect();
+    }
 }

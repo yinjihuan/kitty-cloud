@@ -20,6 +20,7 @@ public class ResponseData<T> implements Serializable {
 	private T data;
 	private String domain;
 	private List<Error> errors;
+	private String requestId;
 
 	public boolean isSuccess() {
 		if(this.code == ResponseCode.SUCCESS_CODE.getCode()){
@@ -127,6 +128,14 @@ public class ResponseData<T> implements Serializable {
 
 	public String getDomain() {
 		return domain;
+	}
+
+	public void setRequestId(String requestId) {
+		this.requestId = requestId;
+	}
+
+	public String getRequestId() {
+		return requestId;
 	}
 
 	public void addError(String name, String message) {
