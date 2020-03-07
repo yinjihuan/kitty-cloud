@@ -16,6 +16,8 @@ import com.cxytiandi.kittycloud.comment.biz.service.CommentService;
 import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.exception.BizException;
+import com.github.structlog4j.ILogger;
+import com.github.structlog4j.SLoggerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,9 +36,11 @@ import java.util.stream.Collectors;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-13 21:45
  */
-@Slf4j
+
 @Service
 public class CommentServiceImpl implements CommentService {
+
+    private ILogger log = SLoggerFactory.getLogger(CommentServiceImpl.class);
 
     @Autowired
     private CommentDao commentDao;
@@ -97,7 +101,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Page<CommentBO> listComments(CommentQueryParam param) {
-        log.info("查询评论参数 [{}]", param);
+        log.info("查询评论参数", param);
         if (!StringUtils.hasText(param.getCommentBizId()) || param.getPage() <= 0
                 || param.getPageSize() <= 0 || param.getPageSize() > 20) {
             throw new BizException(ResponseCode.PARAM_ERROR_CODE);

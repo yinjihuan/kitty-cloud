@@ -42,6 +42,7 @@
                 <pattern>
                     <pattern>
                         {
+                        "env": "%X{env:-}",
                         "severity": "%level",
                         "service": "${APP_NAME:-}",
                         "trace": "%X{X-B3-TraceId:-}",

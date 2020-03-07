@@ -40,6 +40,20 @@
             <artifactId>kitty-spring-cloud-starter-sleuth</artifactId>
             <version>${kitty.version}</version>
         </dependency>
+
+        <!-- 结构化日志输出，方便收集 -->
+        <dependency>
+            <groupId>structlog4j</groupId>
+            <artifactId>structlog4j-api</artifactId>
+            <version>1.0.0</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>structlog4j</groupId>
+            <artifactId>structlog4j-json</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -116,4 +130,10 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 </project>

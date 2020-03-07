@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.comment.biz.param;
 
+import com.github.structlog4j.IToLog;
 import lombok.Data;
 
 /**
@@ -13,7 +14,7 @@ import lombok.Data;
  * @时间 2020-02-16 15:12
  */
 @Data
-public class CommentQueryParam {
+public class CommentQueryParam implements IToLog {
 
     /**
      * 评论业务类型
@@ -35,4 +36,13 @@ public class CommentQueryParam {
      */
     private int pageSize;
 
+    @Override
+    public Object[] toLog() {
+        return new Object[] {
+                "commentBizType", commentBizType,
+                "commentBizId", commentBizId,
+                "page", page,
+                "pageSize", pageSize
+        };
+    }
 }

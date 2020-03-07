@@ -1,9 +1,11 @@
 package com.cxytiandi.kittycloud.common.config;
 
 import com.alibaba.csp.sentinel.adapter.servlet.callback.WebCallbackManager;
-import com.cxytiandi.kittycloud.common.aop.TraceIdAddResponseAspect;
+import com.cxytiandi.kittycloud.common.aop.RemoteServiceAspect;
 import com.cxytiandi.kittycloud.common.exception.GlobalExceptionHandler;
 import com.cxytiandi.kittycloud.common.handler.KittyCloudUrlBlockHandler;
+import com.github.structlog4j.StructLog4J;
+import com.github.structlog4j.json.JsonFormatter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,6 +27,7 @@ public class CommonBeanAutoConfigure {
     @PostConstruct
     public void init() {
         WebCallbackManager.setUrlBlockHandler(new KittyCloudUrlBlockHandler());
+        StructLog4J.setFormatter(JsonFormatter.getInstance());
     }
 
     @Bean
@@ -33,7 +36,7 @@ public class CommonBeanAutoConfigure {
     }
 
     @Bean
-    public TraceIdAddResponseAspect traceIdAddResponseAspect() {
-        return new TraceIdAddResponseAspect();
+    public RemoteServiceAspect remoteServiceAspect() {
+        return new RemoteServiceAspect();
     }
 }
