@@ -1,9 +1,11 @@
 package com.cxytiandi.kittycloud.common.exception;
 
+import brave.Tracer;
 import com.cxytiandi.kittycloud.common.base.Response;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -36,6 +38,9 @@ public class GlobalExceptionHandler {
 	@Value("${spring.application.domain:${spring.application.name:unknown}}")
 	private String domain;
 
+	@Autowired
+	private Tracer tracer;
+
 	/**
 	 * 针对业务异常的处理
 	 *
@@ -48,7 +53,7 @@ public class GlobalExceptionHandler {
 									 HttpServletRequest request) {
 		log.warn("请求发生了预期异常，出错的 url [{}]，出错的描述为 [{}]",
 				request.getRequestURL().toString(), exception.getMessage());
-		return Response.fail(domain, exception.getMessage(), exception.getCode());
+		return Response.fail(domain, exception.getMessage(), tracer.currentSpan().context().traceIdString(), exception.getCode());
 	}
 
 	/**
@@ -66,6 +71,7 @@ public class GlobalExceptionHandler {
 		result.setDomain(domain);
 		result.setCode(ResponseCode.PARAM_ERROR_CODE.getCode());
 		result.setMessage(ResponseCode.PARAM_ERROR_CODE.getMessage());
+		result.setRequestId(tracer.currentSpan().context().traceIdString());
 
 		if (exception instanceof BindException) {
 			for (FieldError fieldError : ((BindException) exception).getBindingResult().getFieldErrors()) {
@@ -99,11 +105,11 @@ public class GlobalExceptionHandler {
 		log.error(MessageFormat.format("请求发生了非预期异常，出错的 url [{0}]，出错的描述为 [{1}]",
 				request.getRequestURL().toString(), exception.getMessage()), exception);
 		if (exception instanceof NoHandlerFoundException) {
-			return Response.fail(domain, exception.getMessage(), ResponseCode.NOT_FOUND_CODE);
+			return Response.fail(domain, exception.getMessage(), tracer.currentSpan().context().traceIdString(), ResponseCode.NOT_FOUND_CODE);
 		} else if (exception instanceof HttpRequestMethodNotSupportedException) {
-			return Response.fail(domain, exception.getMessage(), ResponseCode.REQUEST_METHOD_NOT_SUPPORTED_CODE);
+			return Response.fail(domain, exception.getMessage(), tracer.currentSpan().context().traceIdString(), ResponseCode.REQUEST_METHOD_NOT_SUPPORTED_CODE);
 		}
-		return Response.fail(domain, exception.getMessage(), ResponseCode.SERVER_ERROR_CODE);
+		return Response.fail(domain, exception.getMessage(), tracer.currentSpan().context().traceIdString(), ResponseCode.SERVER_ERROR_CODE);
 	}
 
 	/**
@@ -117,7 +123,7 @@ public class GlobalExceptionHandler {
 	public ResponseData throwableHandler(Exception exception, HttpServletRequest request) {
 		log.error(MessageFormat.format("请求发生了非预期异常，出错的 url [{0}]，出错的描述为 [{1}]",
 				request.getRequestURL().toString(), exception.getMessage()), exception);
-		return Response.fail(domain, exception.getMessage(), ResponseCode.SERVER_ERROR_CODE);
+		return Response.fail(domain, exception.getMessage(), tracer.currentSpan().context().traceIdString(), ResponseCode.SERVER_ERROR_CODE);
 	}
 
 }

@@ -1,10 +1,12 @@
 package com.cxytiandi.kittycloud.gateway.web.controller;
 
+import brave.Tracer;
 import com.cxytiandi.kittycloud.common.base.Response;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.util.StringUtils;
@@ -30,8 +32,14 @@ import java.util.Map;
 @RestController
 public class ErrorHandlerController implements ErrorController {
 
+	@Value("${spring.application.domain:${spring.application.name:unknown}}")
+	private String domain;
+
 	@Autowired
 	private ErrorAttributes errorAttributes;
+
+	@Autowired
+	private Tracer tracer;
 
 	@Override
 	public String getErrorPath() {
@@ -52,7 +60,7 @@ public class ErrorHandlerController implements ErrorController {
 		}
 		log.error(MessageFormat.format("请求发生了非预期异常，出错的 url [{0}]，出错的描述为 [{1}]",
 				request.getRequestURL().toString(), message));
-		return Response.fail(message, ResponseCode.SERVER_ERROR_CODE);
+		return Response.fail(domain, message, tracer.currentSpan().context().traceIdString(), ResponseCode.SERVER_ERROR_CODE);
 	}
 
 	private Map<String, Object> getErrorAttributes(HttpServletRequest request) {

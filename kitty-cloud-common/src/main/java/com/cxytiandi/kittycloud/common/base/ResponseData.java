@@ -64,6 +64,14 @@ public class ResponseData<T> implements Serializable {
 		return this;
 	}
 
+    public ResponseData<T> fail(String message, ResponseCode code, String domain, String requestId) {
+        this.message = message;
+        this.code = code.getCode();
+        this.domain = domain;
+        this.requestId = requestId;
+        return this;
+    }
+
 	public ResponseData<T> fail(String message, int code) {
 		this.message = message;
 		this.code = code;

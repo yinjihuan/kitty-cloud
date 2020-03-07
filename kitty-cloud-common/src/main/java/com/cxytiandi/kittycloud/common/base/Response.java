@@ -57,6 +57,12 @@ public class Response {
 		return res;
 	}
 
+	public static <E> ResponseData<E> fail(String domain, String message, String requestId, ResponseCode code) {
+		ResponseData<E> res = new ResponseData<E>();
+		res.fail(message, code, domain, requestId);
+		return res;
+	}
+
 	public static <E> ResponseData<E> fail(String message, int code) {
 		ResponseData<E> res = new ResponseData<E>();
 		res.fail(message, code);
