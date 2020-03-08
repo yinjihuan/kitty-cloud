@@ -47,7 +47,7 @@ Spring Cloud 架构搭建的开源社区技术网站
 
 # 公众号
 
-公众号会持续更新Kitty Cloud 和 微服务相关技术文章，请关注。技术交流群请加我an900
+公众号会持续更新Kitty Cloud 和 微服务相关技术文章，请关注。技术交流群请加我微信jihuan900
 
 ![](http://file.cxytiandi.com/2685774-17a60e1ead7fd232.png)
 
