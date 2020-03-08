@@ -36,7 +36,7 @@ public class RemoteServiceAspect {
 
             Object result = pjp.proceed();
             // Trace ID 添加到响应内容中
-            if (result instanceof ResponseData && tracer != null) {
+            if (result instanceof ResponseData && tracer != null && tracer.currentSpan() != null) {
                 String traceId = tracer.currentSpan().context().traceIdString();
                 ResponseData responseData = (ResponseData)result;
                 responseData.setRequestId(traceId);

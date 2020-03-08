@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-13 20:44:04
  */
-@Service(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP)
+@Service(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP, timeout = 3000)
 @RestController
 public class UserRemoteServiceImpl implements UserRemoteService {
 

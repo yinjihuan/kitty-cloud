@@ -22,6 +22,11 @@
             <artifactId>kitty-spring-cloud-starter-sentinel</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-dubbo</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>

@@ -4,6 +4,7 @@ import com.alibaba.csp.sentinel.adapter.servlet.callback.WebCallbackManager;
 import com.cxytiandi.kittycloud.common.aop.RemoteServiceAspect;
 import com.cxytiandi.kittycloud.common.exception.GlobalExceptionHandler;
 import com.cxytiandi.kittycloud.common.handler.KittyCloudUrlBlockHandler;
+import com.cxytiandi.kittycloud.common.helper.ApplicationContextHelper;
 import com.github.structlog4j.StructLog4J;
 import com.github.structlog4j.json.JsonFormatter;
 import org.springframework.context.annotation.Bean;
@@ -38,5 +39,10 @@ public class CommonBeanAutoConfigure {
     @Bean
     public RemoteServiceAspect remoteServiceAspect() {
         return new RemoteServiceAspect();
+    }
+
+    @Bean
+    public ApplicationContextHelper applicationContextHelper() {
+        return new ApplicationContextHelper();
     }
 }
