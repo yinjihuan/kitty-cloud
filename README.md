@@ -27,3 +27,19 @@ Spring Cloud 架构搭建的开源社区技术网站
 ## 项目文档
 
 * 文档地址：[http://cxytiandi.com](http://cxytiandi.com/blog/detail/36440)
+
+## 项目模块
+
+* kitty-cloud-common：公共模块，通用的工具类
+* kitty-cloud-user：用户服务
+* kitty-cloud-article：文章服务
+* kitty-cloud-comment：评论服务
+* kitty-cloud-gateway：Web网关
+* 开发中。。。。。。
+
+# 公众号
+
+公众号会持续更新Kitty Cloud 和 微服务相关技术文章，请关注。技术交流群请加我个人微信 jihuan900
+
+![](http://file.cxytiandi.com/2685774-17a60e1ead7fd232.png)
+
