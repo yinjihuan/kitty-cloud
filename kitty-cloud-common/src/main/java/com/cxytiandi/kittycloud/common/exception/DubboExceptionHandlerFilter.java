@@ -33,7 +33,7 @@ public class DubboExceptionHandlerFilter implements Filter {
             if (result != null && result.getException() instanceof BizException) {
                 BizException bizException = (BizException) result.getException();
                 result.setValue(Response.fail(getDomain(), bizException.getMessage(), getTraceId(), bizException.getCode()));
-            } else {
+            } else if (result != null && result.getException() != null){
                 result.setValue(Response.fail(getDomain(), result.getException().getMessage(), getTraceId(), ResponseCode.SERVER_ERROR_CODE));
             }
         } catch (RuntimeException e) {
