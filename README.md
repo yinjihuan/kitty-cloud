@@ -37,9 +37,16 @@ Spring Cloud 架构搭建的开源社区技术网站
 * kitty-cloud-gateway：Web网关
 * 开发中。。。。。。
 
+## 项目演示
+
+请大家不要随便改变配置内容，想要实验的自己本地安装就可以了，多谢合作。
+
+* Nacos控制台：[http://47.105.66.210:8848/nacos](http://47.105.66.210:8848/nacos) nacos/nacos
+* Cat控制台：[http://47.105.66.210:8080/cat](http://47.105.66.210:8080/cat)
+
 # 公众号
 
-公众号会持续更新Kitty Cloud 和 微服务相关技术文章，请关注。技术交流群请加我个人微信 jihuan900
+公众号会持续更新Kitty Cloud 和 微服务相关技术文章，请关注。技术交流群请加我an900
 
 ![](http://file.cxytiandi.com/2685774-17a60e1ead7fd232.png)
 
