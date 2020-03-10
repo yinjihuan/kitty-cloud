@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  * @时间 2020-02-16 16:14
  */
 @Component
-public class CommentQueryRequestConvert implements EntityConvert<CommentQueryRequest, CommentQueryParam> {
+public class CommentQueryParamConvert implements EntityConvert<CommentQueryRequest, CommentQueryParam> {
 
     @Override
     public CommentQueryParam convert(CommentQueryRequest source) {

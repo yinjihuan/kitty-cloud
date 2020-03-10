@@ -14,6 +14,8 @@
         <module>kitty-cloud-article</module>
         <module>kitty-cloud-comment</module>
         <module>kitty-cloud-gateway</module>
+        <module>kitty-cloud-search</module>
+        <module>kitty-cloud-job</module>
     </modules>
 
     <properties>
@@ -111,6 +113,11 @@
             <dependency>
                 <groupId>com.cxytiandi</groupId>
                 <artifactId>kitty-spring-cloud-starter-sentinel</artifactId>
+                <version>${kitty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-elasticsearch</artifactId>
                 <version>${kitty.version}</version>
             </dependency>
         </dependencies>

@@ -7,7 +7,7 @@ import com.cxytiandi.kittycloud.comment.api.service.CommentRemoteService;
 import com.cxytiandi.kittycloud.comment.biz.bo.CommentBO;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
 import com.cxytiandi.kittycloud.comment.biz.service.CommentService;
-import com.cxytiandi.kittycloud.comment.provider.convert.CommentQueryRequestConvert;
+import com.cxytiandi.kittycloud.comment.provider.convert.CommentQueryParamConvert;
 import com.cxytiandi.kittycloud.comment.provider.convert.CommentResponseConvert;
 import com.cxytiandi.kittycloud.comment.provider.convert.CommentSaveParamConvert;
 import com.cxytiandi.kittycloud.common.base.Page;
@@ -42,7 +42,7 @@ public class CommentRemoteServiceImpl implements CommentRemoteService {
     private CommentSaveParamConvert commentSaveParamConvert;
 
     @Autowired
-    private CommentQueryRequestConvert commentQueryRequestConvert;
+    private CommentQueryParamConvert commentQueryParamConvert;
 
     @Autowired
     private CommentResponseConvert commentResponseConvert;
@@ -60,7 +60,7 @@ public class CommentRemoteServiceImpl implements CommentRemoteService {
 
     @Override
     public ResponseData<Page<CommentResponse>> listComments(CommentQueryRequest request) {
-        Page<CommentBO> commentPage = commentService.listComments(commentQueryRequestConvert.convert(request));
+        Page<CommentBO> commentPage = commentService.listComments(commentQueryParamConvert.convert(request));
         List<CommentResponse> datas = commentPage.getList().parallelStream().map(commentResponseConvert::convert).collect(Collectors.toList());
         return Response.ok(new Page(commentPage.getStart(), commentPage.getLimit(), datas, commentPage.getTotalRecords()));
     }
