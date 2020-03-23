@@ -1,8 +1,7 @@
 package com.cxytiandi.kittycloud.search.biz.config;
 
-import com.alibaba.nacos.api.config.annotation.NacosConfigurationProperties;
-import com.cxytiandi.kittycloud.common.constant.NacosConstant;
 import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -17,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Configuration
-@NacosConfigurationProperties(prefix = "kitty.cloud.search.es", dataId = NacosConstant.SEARCH_ES_BIZ, groupId = NacosConstant.BIZ_GROUP, autoRefreshed = true)
+@ConfigurationProperties("kitty.cloud.search.es")
 public class ElasticSearchIndexConfig {
 
     /**

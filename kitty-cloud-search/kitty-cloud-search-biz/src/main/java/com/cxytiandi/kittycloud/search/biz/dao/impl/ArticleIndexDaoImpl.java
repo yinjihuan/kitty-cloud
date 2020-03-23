@@ -31,6 +31,7 @@ public class ArticleIndexDaoImpl implements ArticleIndexDao {
     public Boolean saveArticleIndex(ArticleDocument document) {
         IndexResponse response = restHighLevelClient.index(elasticSearchIndexConfig.getArticleSaveIndexName(),
                 EsConstant.DEFAULT_TYPE, document, document.getId().toString());
+        elasticSearchIndexConfig.getArticleSaveIndexName();
         return response.status() == RestStatus.CREATED || response.status() == RestStatus.OK;
     }
 }

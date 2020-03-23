@@ -21,5 +21,10 @@
             <groupId>com.cxytiandi</groupId>
             <artifactId>kitty-spring-cloud-starter-nacos</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-sentinel</artifactId>
+        </dependency>
     </dependencies>
 </project>
