@@ -35,6 +35,8 @@ Spring Cloud 架构搭建的开源社区技术网站
 * kitty-cloud-article：文章服务
 * kitty-cloud-comment：评论服务
 * kitty-cloud-gateway：Web网关
+* kitty-cloud-search：搜索服务
+* kitty-cloud-job：定时任务
 * 开发中。。。。。。
 
 ## 项目演示
