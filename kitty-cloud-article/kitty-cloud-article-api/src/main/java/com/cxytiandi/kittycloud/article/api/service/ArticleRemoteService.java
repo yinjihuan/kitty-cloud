@@ -1,8 +1,8 @@
 package com.cxytiandi.kittycloud.article.api.service;
 
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.article.api.fallback.ArticleRemoteServiceFallbackFactory;
 import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
-import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

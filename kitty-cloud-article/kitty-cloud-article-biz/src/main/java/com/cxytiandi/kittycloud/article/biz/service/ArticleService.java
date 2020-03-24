@@ -1,6 +1,6 @@
 package com.cxytiandi.kittycloud.article.biz.service;
 
-import com.cxytiandi.kittycloud.common.base.Page;
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.article.biz.bo.ArticleBO;
 
 /**

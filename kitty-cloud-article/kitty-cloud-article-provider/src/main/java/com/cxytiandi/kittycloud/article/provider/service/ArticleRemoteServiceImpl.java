@@ -1,6 +1,6 @@
 package com.cxytiandi.kittycloud.article.provider.service;
 
-import com.cxytiandi.kittycloud.common.base.Page;
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
 import com.cxytiandi.kittycloud.article.api.service.ArticleRemoteService;
 import com.cxytiandi.kittycloud.article.biz.bo.ArticleBO;
@@ -42,7 +42,7 @@ public class ArticleRemoteServiceImpl implements ArticleRemoteService {
     }
 
     @Override
-    public ResponseData<com.cxytiandi.kittycloud.common.base.Page<ArticleResponse>> listHotArticles(int page, int pageSize) {
+    public ResponseData<Page<ArticleResponse>> listHotArticles(int page, int pageSize) {
         Page<ArticleBO> articlesPage = articleService.listHotArticles(page, pageSize);
 
         List<ArticleResponse> articleResponses = articlesPage.getList().stream().map(articleResponseConvert::convert).collect(Collectors.toList());

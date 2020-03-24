@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.comment.provider.service;
 
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.comment.api.request.CommentQueryRequest;
 import com.cxytiandi.kittycloud.comment.api.request.CommentSaveRequest;
 import com.cxytiandi.kittycloud.comment.api.response.CommentResponse;
@@ -10,7 +11,6 @@ import com.cxytiandi.kittycloud.comment.biz.service.CommentService;
 import com.cxytiandi.kittycloud.comment.provider.convert.CommentQueryParamConvert;
 import com.cxytiandi.kittycloud.comment.provider.convert.CommentResponseConvert;
 import com.cxytiandi.kittycloud.comment.provider.convert.CommentSaveParamConvert;
-import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.Response;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import com.cxytiandi.kittycloud.common.constant.DubboConstant;

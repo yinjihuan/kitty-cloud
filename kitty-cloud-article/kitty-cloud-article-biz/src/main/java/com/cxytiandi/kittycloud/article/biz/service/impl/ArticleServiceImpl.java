@@ -2,7 +2,7 @@ package com.cxytiandi.kittycloud.article.biz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.cxytiandi.kittycloud.common.base.Page;
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.article.biz.bo.ArticleBO;
 import com.cxytiandi.kittycloud.article.biz.convert.ArticleBoConvert;
 import com.cxytiandi.kittycloud.article.biz.dao.ArticleDao;

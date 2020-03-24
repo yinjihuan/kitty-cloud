@@ -1,7 +1,10 @@
 package com.cxytiandi.kittycloud.search.api.service;
 
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import com.cxytiandi.kittycloud.search.api.request.ArticleIndexSaveRequest;
+import com.cxytiandi.kittycloud.search.api.request.ArticleIndexSearchRequest;
+import com.cxytiandi.kittycloud.search.api.response.ArticleIndexResponse;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
@@ -22,5 +25,12 @@ public interface ArticleIndexRemoteService {
      * @return
      */
     ResponseData<Boolean> saveArticleIndex(@RequestBody ArticleIndexSaveRequest request);
+
+    /**
+     * 搜索文章
+     * @param request
+     * @return
+     */
+    ResponseData<Page<ArticleIndexResponse>> searchArticleIndex(ArticleIndexSearchRequest request);
 
 }

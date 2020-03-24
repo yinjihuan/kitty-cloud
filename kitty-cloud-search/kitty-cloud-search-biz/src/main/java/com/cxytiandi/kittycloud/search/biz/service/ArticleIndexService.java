@@ -1,6 +1,9 @@
 package com.cxytiandi.kittycloud.search.biz.service;
 
+import com.cxytiandi.kitty.common.page.Page;
+import com.cxytiandi.kittycloud.search.biz.bo.ArticleIndexBO;
 import com.cxytiandi.kittycloud.search.biz.param.ArticleIndexSaveParam;
+import com.cxytiandi.kittycloud.search.biz.param.ArticleIndexSearchParam;
 
 /**
  * @作者 尹吉欢
@@ -18,5 +21,12 @@ public interface ArticleIndexService {
      * @return
      */
     Boolean saveArticleIndex(ArticleIndexSaveParam param);
+
+    /**
+     * 搜索文章
+     * @param param
+     * @return
+     */
+    Page<ArticleIndexBO> searchArticleIndex(ArticleIndexSearchParam param);
 
 }

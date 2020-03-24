@@ -1,10 +1,10 @@
 package com.cxytiandi.kittycloud.comment.api.fallback;
 
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.comment.api.request.CommentQueryRequest;
 import com.cxytiandi.kittycloud.comment.api.request.CommentSaveRequest;
 import com.cxytiandi.kittycloud.comment.api.response.CommentResponse;
 import com.cxytiandi.kittycloud.comment.api.service.CommentRemoteService;
-import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.Response;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.base.ResponseData;

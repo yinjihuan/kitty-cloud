@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.comment.biz.service.impl;
 
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.comment.biz.bo.CommentBO;
 import com.cxytiandi.kittycloud.comment.biz.convert.CommentBOConvert;
 import com.cxytiandi.kittycloud.comment.biz.convert.CommentDocumentConvert;
@@ -13,13 +14,12 @@ import com.cxytiandi.kittycloud.comment.biz.param.CommentQueryParam;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentReplySaveParam;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
 import com.cxytiandi.kittycloud.comment.biz.service.CommentService;
-import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.exception.BizException;
 import com.github.structlog4j.ILogger;
 import com.github.structlog4j.SLoggerFactory;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -57,6 +57,8 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private CommentManager commentManager;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
     @Override
     public String saveComment(CommentSaveParam param) {
         if (param == null || !StringUtils.hasText(param.getCommentBizId()) || !StringUtils.hasText(param.getContent())

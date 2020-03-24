@@ -1,11 +1,11 @@
 package com.cxytiandi.kittycloud.comment.provider;
 
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.comment.api.request.CommentQueryRequest;
 import com.cxytiandi.kittycloud.comment.api.request.CommentSaveRequest;
 import com.cxytiandi.kittycloud.comment.api.response.CommentResponse;
 import com.cxytiandi.kittycloud.comment.api.service.CommentRemoteService;
 import com.cxytiandi.kittycloud.comment.biz.enums.CommentBizTypeEnum;
-import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import org.junit.Assert;
 import org.junit.Test;

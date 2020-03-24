@@ -17,16 +17,16 @@ public enum ArticleTypeEnum {
     /**
      * 原创
      */
-    ORIGINAL(0, "原创"),
+    ORIGINAL(1, "原创"),
     /**
      * 转载
      */
-    REPRINT(1, "转载"),
+    REPRINT(2, "转载"),
 
     /**
      * 翻译
      */
-    TRANSLATE(2, "转载");
+    TRANSLATE(3, "转载");
 
     ArticleTypeEnum(int type, String descp) {
         this.type = type;

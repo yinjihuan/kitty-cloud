@@ -1,8 +1,8 @@
 package com.cxytiandi.kittycloud.article.api.fallback;
 
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
 import com.cxytiandi.kittycloud.article.api.service.ArticleRemoteService;
-import com.cxytiandi.kittycloud.common.base.Page;
 import com.cxytiandi.kittycloud.common.base.Response;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
