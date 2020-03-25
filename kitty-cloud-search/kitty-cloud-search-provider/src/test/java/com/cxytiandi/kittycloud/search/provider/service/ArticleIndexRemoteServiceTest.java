@@ -1,7 +1,10 @@
 package com.cxytiandi.kittycloud.search.provider.service;
 
+import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import com.cxytiandi.kittycloud.search.api.request.ArticleIndexSaveRequest;
+import com.cxytiandi.kittycloud.search.api.request.ArticleIndexSearchRequest;
+import com.cxytiandi.kittycloud.search.api.response.ArticleIndexResponse;
 import com.cxytiandi.kittycloud.search.api.service.ArticleIndexRemoteService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -37,6 +40,15 @@ public class ArticleIndexRemoteServiceTest {
         request.setTextContent("从入门到放弃");
         ResponseData<Boolean> saveArticleIndexResp = articleIndexRemoteService.saveArticleIndex(request);
         Assert.assertTrue(saveArticleIndexResp.isSuccess());
+    }
+
+    @Test
+    public void testSearchArticleIndex() {
+        ArticleIndexSearchRequest request = new ArticleIndexSearchRequest();
+        request.setPage(1);
+        request.setPageSize(10);
+        ResponseData<Page<ArticleIndexResponse>> searchArticleIndexResp = articleIndexRemoteService.searchArticleIndex(request);
+        Assert.assertTrue(searchArticleIndexResp.isSuccess());
     }
 
 }

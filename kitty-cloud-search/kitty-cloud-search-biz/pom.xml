@@ -26,5 +26,10 @@
             <groupId>com.cxytiandi</groupId>
             <artifactId>kitty-spring-cloud-starter-sentinel</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-cat</artifactId>
+        </dependency>
     </dependencies>
 </project>

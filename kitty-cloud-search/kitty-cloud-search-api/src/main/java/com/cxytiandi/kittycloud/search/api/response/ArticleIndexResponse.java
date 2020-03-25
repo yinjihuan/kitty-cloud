@@ -13,6 +13,41 @@ import lombok.Data;
 @Data
 public class ArticleIndexResponse {
 
+    private Long id;
 
+    /**
+     * 标题
+     */
+    private String title;
+
+    /**
+     * 类型
+     */
+    private int type;
+
+    /**
+     * 用户ID
+     */
+    private Long userId;
+
+    /**
+     * 标签（多个英文逗号分隔）
+     */
+    private String tags;
+
+    /**
+     * 文本内容
+     */
+    private String textContent;
+
+    /**
+     * 文章状态
+     */
+    private int status;
+
+    /**
+     * 热度值（点赞数+评论数+访问数）
+     */
+    private Integer heat;
 
 }

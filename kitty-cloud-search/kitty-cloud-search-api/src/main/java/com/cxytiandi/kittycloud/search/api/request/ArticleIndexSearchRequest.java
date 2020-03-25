@@ -30,4 +30,14 @@ public class ArticleIndexSearchRequest implements Serializable {
      */
     private String tag;
 
+    /**
+     * 页数
+     */
+    private int page;
+
+    /**
+     * 页大小
+     */
+    private int pageSize;
+
 }
