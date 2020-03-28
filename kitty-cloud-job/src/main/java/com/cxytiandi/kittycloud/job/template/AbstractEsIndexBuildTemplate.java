@@ -1,12 +1,13 @@
 package com.cxytiandi.kittycloud.job.template;
 
 
-import com.cxytiandi.kittycloud.job.param.EsIndexBuildParam;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
 /**
+ * ES索引构建模板
+ *
  * @作者 尹吉欢
  * @个人微信 jihuan900
  * @微信公众号 猿天地
@@ -17,39 +18,34 @@ import java.util.List;
 public abstract class AbstractEsIndexBuildTemplate<Request, Source> {
 
     public final void execute(Request request) {
-        int page = 1;
-        boolean hasNext = true;
-
-        while (hasNext) {
-            List<Source> sources = getIndexSource(page, request);
-            if (!CollectionUtils.isEmpty(sources)) {
-                buildIndex(sources);
-            } else {
-                hasNext = false;
-            }
-            page++;
-        }
-
+        doExecute(request, false);
     }
 
-    public final void executeWithThreadPool(Request request) {
-        int page = 1;
-        boolean hasNext = true;
+    public final void executeWithParallelStream(Request request) {
+        doExecute(request, true);
+    }
 
-        while (hasNext) {
+    private void doExecute(Request request, boolean isParalleStream) {
+        int page = 1;
+        while (true) {
             List<Source> sources = getIndexSource(page, request);
-            if (!CollectionUtils.isEmpty(sources)) {
-                buildIndex(sources);
-            } else {
-                hasNext = false;
+
+            if (CollectionUtils.isEmpty(sources)) {
+                break;
             }
+
+            if (isParalleStream) {
+                sources.parallelStream().forEach(this::buildIndex);
+            } else {
+                sources.stream().forEach(this::buildIndex);
+            }
+
             page++;
         }
-
     }
 
     protected abstract List getIndexSource(int page, Request request);
 
-    protected abstract void buildIndex(List<Source> sources);
+    protected abstract void buildIndex(Source source);
 
 }
