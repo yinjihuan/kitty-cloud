@@ -24,6 +24,8 @@ Spring Cloud 架构搭建的开源社区技术网站
 
 **[JetCache](https://github.com/alibaba/jetcache)**：基于Java的缓存系统封装，提供统一的API和注解来简化缓存的使用。
 
+**[ElasticSearch](https://github.com/elastic/elasticsearch)**：ElasticSearch 是一个开源，分布式，RESTful搜索引擎。
+
 ## 项目文档
 
 * 文档地址：[http://cxytiandi.com](http://cxytiandi.com/blog/detail/36440)

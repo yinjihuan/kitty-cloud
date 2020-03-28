@@ -11,5 +11,27 @@
 
     <artifactId>kitty-job</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-cloud-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-xxljob</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-nacos</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>kitty-spring-cloud-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

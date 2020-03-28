@@ -27,7 +27,6 @@ public class CommonBeanAutoConfigure {
 
     @PostConstruct
     public void init() {
-        WebCallbackManager.setUrlBlockHandler(new KittyCloudUrlBlockHandler());
         StructLog4J.setFormatter(JsonFormatter.getInstance());
     }
 

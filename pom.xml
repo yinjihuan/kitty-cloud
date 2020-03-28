@@ -120,6 +120,11 @@
                 <artifactId>kitty-spring-cloud-starter-elasticsearch</artifactId>
                 <version>${kitty.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-xxljob</artifactId>
+                <version>${kitty.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

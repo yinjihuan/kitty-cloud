@@ -1,5 +1,8 @@
 package com.cxytiandi.kittycloud.job;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 /**
  * Job启动类
  *
@@ -10,8 +13,11 @@ package com.cxytiandi.kittycloud.job;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-03-11 21:09
  */
+@SpringBootApplication(scanBasePackages = {"com.cxytiandi.kittycloud.job","com.cxytiandi.kitty.web.config"})
 public class KittyCloudJobApp {
 
-
+    public static void main(String[] args) {
+        SpringApplication.run(KittyCloudJobApp.class);
+    }
 
 }
