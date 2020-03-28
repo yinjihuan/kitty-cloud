@@ -48,6 +48,7 @@ Spring Cloud 架构搭建的开源社区技术网站
 * Nacos控制台：[http://47.105.66.210:8848/nacos](http://47.105.66.210:8848/nacos) nacos/nacos
 * Cat控制台：[http://47.105.66.210:8080/cat](http://47.105.66.210:8080/cat)
 * Sentinel控制台：[http://47.105.66.210:8300](http://47.105.66.210:8300) sentinel/sentinel
+* XXL-JOB控制台：[http://47.105.66.210:8010/xxl-job-admin/](http://47.105.66.210:8010/xxl-job-admin/) admin/123456
 
 # 公众号
 
