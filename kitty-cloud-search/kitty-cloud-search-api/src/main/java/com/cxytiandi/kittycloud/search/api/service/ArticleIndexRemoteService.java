@@ -2,9 +2,13 @@ package com.cxytiandi.kittycloud.search.api.service;
 
 import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
+import com.cxytiandi.kittycloud.search.api.fallback.ArticleIndexRemoteServiceFallbackFactory;
 import com.cxytiandi.kittycloud.search.api.request.ArticleIndexSaveRequest;
 import com.cxytiandi.kittycloud.search.api.request.ArticleIndexSearchRequest;
 import com.cxytiandi.kittycloud.search.api.response.ArticleIndexResponse;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-03-10 23:40
  */
+@FeignClient(name = "kitty-cloud-search-provider", fallbackFactory = ArticleIndexRemoteServiceFallbackFactory.class)
 public interface ArticleIndexRemoteService {
 
     /**
@@ -24,6 +29,7 @@ public interface ArticleIndexRemoteService {
      * @param request
      * @return
      */
+    @PostMapping("/articles")
     ResponseData<Boolean> saveArticleIndex(@RequestBody ArticleIndexSaveRequest request);
 
     /**
@@ -31,6 +37,7 @@ public interface ArticleIndexRemoteService {
      * @param request
      * @return
      */
+    @GetMapping("/articles")
     ResponseData<Page<ArticleIndexResponse>> searchArticleIndex(ArticleIndexSearchRequest request);
 
 }
