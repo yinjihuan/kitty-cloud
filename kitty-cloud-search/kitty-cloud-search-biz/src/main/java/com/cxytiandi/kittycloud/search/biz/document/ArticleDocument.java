@@ -2,6 +2,8 @@ package com.cxytiandi.kittycloud.search.biz.document;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 文章ES Document
  *
@@ -33,9 +35,9 @@ public class ArticleDocument {
     private Long userId;
 
     /**
-     * 标签（多个英文逗号分隔）
+     * 标签
      */
-    private String tags;
+    private List<String> tags;
 
     /**
      * 文本内容

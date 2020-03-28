@@ -3,6 +3,7 @@ package com.cxytiandi.kittycloud.search.api.request;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @作者 尹吉欢
@@ -33,9 +34,9 @@ public class ArticleIndexSaveRequest implements Serializable {
     private Long userId;
 
     /**
-     * 标签（多个英文逗号分隔）
+     * 标签
      */
-    private String tags;
+    private List<String> tags;
 
     /**
      * 文本内容

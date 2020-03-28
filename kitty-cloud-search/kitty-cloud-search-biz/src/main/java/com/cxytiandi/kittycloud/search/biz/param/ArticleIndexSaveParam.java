@@ -2,6 +2,8 @@ package com.cxytiandi.kittycloud.search.biz.param;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 文章索引保存参数
  *
@@ -33,9 +35,9 @@ public class ArticleIndexSaveParam {
     private Long userId;
 
     /**
-     * 标签（多个英文逗号分隔）
+     * 标签
      */
-    private String tags;
+    private List<String> tags;
 
     /**
      * 文本内容

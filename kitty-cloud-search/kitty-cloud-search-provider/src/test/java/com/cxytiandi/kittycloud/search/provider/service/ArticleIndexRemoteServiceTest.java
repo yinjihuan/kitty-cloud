@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+
 /**
  * @作者 尹吉欢
  * @个人微信 jihuan900
@@ -36,7 +38,7 @@ public class ArticleIndexRemoteServiceTest {
         request.setHeat(100);
         request.setStatus(1);
         request.setTitle("测试文章");
-        request.setTags("java,spring");
+        request.setTags(Arrays.asList("java","spring"));
         request.setTextContent("从入门到放弃");
         ResponseData<Boolean> saveArticleIndexResp = articleIndexRemoteService.saveArticleIndex(request);
         Assert.assertTrue(saveArticleIndexResp.isSuccess());
@@ -46,7 +48,7 @@ public class ArticleIndexRemoteServiceTest {
     public void testSearchArticleIndex() {
         ArticleIndexSearchRequest request = new ArticleIndexSearchRequest();
         request.setPage(1);
-        request.setPageSize(10);
+        request.setSize(10);
         ResponseData<Page<ArticleIndexResponse>> searchArticleIndexResp = articleIndexRemoteService.searchArticleIndex(request);
         Assert.assertTrue(searchArticleIndexResp.isSuccess());
     }
