@@ -1,7 +1,9 @@
 package com.cxytiandi.kittycloud.article.api.service;
 
 import com.cxytiandi.kitty.common.page.Page;
+import com.cxytiandi.kittycloud.article.api.request.ArticleQueryRequest;
 import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
+import com.cxytiandi.kittycloud.common.base.PageEntity;
 import com.cxytiandi.kittycloud.common.base.Response;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
@@ -29,20 +31,20 @@ public class ArticleRemoteServiceMock implements ArticleRemoteService {
     }
 
     @Override
-    public ResponseData<Page<ArticleResponse>> listHotArticles(int page, int pageSize) {
-        log.error(MessageFormat.format("ArticleRemoteService.listHotArticles fallback，参数为 [{0}] [{1}]", page, pageSize));
+    public ResponseData<Page<ArticleResponse>> listHotArticles(ArticleQueryRequest request) {
+        log.error(MessageFormat.format("ArticleRemoteService.listHotArticles fallback，参数为 [{0}]", request));
         return Response.fail("fallback", ResponseCode.SERVER_DOWNGRADE_CODE);
     }
 
     @Override
-    public ResponseData<Page<ArticleResponse>> listNewestArticles(int page, int pageSize) {
-        log.error(MessageFormat.format("ArticleRemoteService.listNewestArticles fallback，参数为 [{0}] [{1}]", page, pageSize));
+    public ResponseData<Page<ArticleResponse>> listNewestArticles(ArticleQueryRequest request) {
+        log.error(MessageFormat.format("ArticleRemoteService.listNewestArticles fallback，参数为 [{0}]", request));
         return Response.fail("fallback", ResponseCode.SERVER_DOWNGRADE_CODE);
     }
 
     @Override
-    public ResponseData<Page<ArticleResponse>> listArticles(int page, int pageSize) {
-        log.error(MessageFormat.format("ArticleRemoteService.listArticles fallback，参数为 [{0}] [{1}]", page, pageSize));
+    public ResponseData<Page<ArticleResponse>> listArticles(ArticleQueryRequest request) {
+        log.error(MessageFormat.format("ArticleRemoteService.listArticles fallback，参数为 [{0}]", request));
         return Response.fail("fallback", ResponseCode.SERVER_DOWNGRADE_CODE);
     }
 }
