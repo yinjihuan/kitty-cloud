@@ -10,6 +10,7 @@ import com.cxytiandi.kittycloud.article.biz.dataobject.ArticleDO;
 import com.cxytiandi.kittycloud.article.biz.manager.ArticleManager;
 import com.cxytiandi.kittycloud.article.biz.service.ArticleService;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
+import com.cxytiandi.kittycloud.common.base.ResponseData;
 import com.cxytiandi.kittycloud.common.exception.BizException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,6 +69,7 @@ public class ArticleServiceImpl implements ArticleService {
             String nickname = articleManager.getNickname(r.getUserId());
             return articleBoConvert.convertPlus(r, nickname);
         }).collect(Collectors.toList());
+
         Page pageResponse = new Page(Page.page2Start(page, pageSize), pageSize, articleBos, articleDoPage.getTotal());
 
         return pageResponse;
@@ -86,6 +88,21 @@ public class ArticleServiceImpl implements ArticleService {
             String nickname = articleManager.getNickname(r.getUserId());
             return articleBoConvert.convertPlus(r, nickname);
         }).collect(Collectors.toList());
+
+        Page pageResponse = new Page(Page.page2Start(page, pageSize), pageSize, articleBos, articleDoPage.getTotal());
+
+        return pageResponse;
+    }
+
+    @Override
+    public Page<ArticleBO> listArticles(int page, int pageSize) {
+        com.baomidou.mybatisplus.extension.plugins.pagination.Page queryPage = new com.baomidou.mybatisplus.extension.plugins.pagination.Page<>(page, pageSize);
+        IPage<ArticleDO> articleDoPage = articleDao.selectPage(queryPage, new QueryWrapper<>());
+        List<ArticleBO> articleBos = articleDoPage.getRecords().stream().map( r -> {
+            String nickname = articleManager.getNickname(r.getUserId());
+            return articleBoConvert.convertPlus(r, nickname);
+        }).collect(Collectors.toList());
+
         Page pageResponse = new Page(Page.page2Start(page, pageSize), pageSize, articleBos, articleDoPage.getTotal());
 
         return pageResponse;

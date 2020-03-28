@@ -47,4 +47,13 @@ public interface ArticleRemoteService {
     @GetMapping("/articles/newest")
     ResponseData<Page<ArticleResponse>> listNewestArticles(int page, int pageSize);
 
+    /**
+     * 所有文章
+     * @param page  页数
+     * @param pageSize  页大小
+     * @return
+     */
+    @GetMapping("/articles")
+    ResponseData<Page<ArticleResponse>> listArticles(int page, int pageSize);
+
 }

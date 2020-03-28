@@ -39,4 +39,10 @@ public class ArticleRemoteServiceMock implements ArticleRemoteService {
         log.error(MessageFormat.format("ArticleRemoteService.listNewestArticles fallback，参数为 [{0}] [{1}]", page, pageSize));
         return Response.fail("fallback", ResponseCode.SERVER_DOWNGRADE_CODE);
     }
+
+    @Override
+    public ResponseData<Page<ArticleResponse>> listArticles(int page, int pageSize) {
+        log.error(MessageFormat.format("ArticleRemoteService.listArticles fallback，参数为 [{0}] [{1}]", page, pageSize));
+        return Response.fail("fallback", ResponseCode.SERVER_DOWNGRADE_CODE);
+    }
 }

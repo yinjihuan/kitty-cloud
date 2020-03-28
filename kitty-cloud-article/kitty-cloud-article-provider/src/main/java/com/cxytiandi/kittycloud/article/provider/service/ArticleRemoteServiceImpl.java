@@ -61,4 +61,14 @@ public class ArticleRemoteServiceImpl implements ArticleRemoteService {
         return Response.ok(pageResponse);
     }
 
+    @Override
+    public ResponseData<Page<ArticleResponse>> listArticles(int page, int pageSize) {
+        Page<ArticleBO> articlesPage = articleService.listArticles(page, pageSize);
+
+        List<ArticleResponse> articleResponses = articlesPage.getList().stream().map(articleResponseConvert::convert).collect(Collectors.toList());
+        Page pageResponse = new Page(page, pageSize, articleResponses, articlesPage.getTotalRecords());
+
+        return Response.ok(pageResponse);
+    }
+
 }

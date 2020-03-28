@@ -2,6 +2,7 @@ package com.cxytiandi.kittycloud.article.biz.service;
 
 import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.article.biz.bo.ArticleBO;
+import com.cxytiandi.kittycloud.common.base.ResponseData;
 
 /**
  * 文章业务接口
@@ -37,5 +38,13 @@ public interface ArticleService {
      * @return
      */
     Page<ArticleBO> listNewestArticles(int page, int pageSize);
+
+    /**
+     * 所有文章
+     * @param page  页数
+     * @param pageSize  页大小
+     * @return
+     */
+    Page<ArticleBO> listArticles(int page, int pageSize);
 
 }
