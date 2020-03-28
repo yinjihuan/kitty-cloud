@@ -1,6 +1,7 @@
 package com.cxytiandi.kittycloud.user.api.config;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Feign Client自动初始化
@@ -13,6 +14,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @时间 2020-02-13 20:44:04
  */
 @EnableFeignClients("com.cxytiandi.kittycloud.user.api")
+@ComponentScan("com.cxytiandi.kittycloud.user.api")
 public class RemoteServiceAutoConfigure {
 
 }
