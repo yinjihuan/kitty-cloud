@@ -50,8 +50,8 @@ public class ArticleIndexDaoImpl implements ArticleIndexDao {
     public Page<ArticleDocument> searchArticleIndex(ArticleIndexSearchParam param) {
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.query(buildSearchArticleIndexQuery(param))
-                .from(Page.page2Start(param.getPage(), param.getPageSize()))
-                .size(param.getPageSize());
+                .from(Page.page2Start(param.getPage(), param.getSize()))
+                .size(param.getSize());
 
         SearchRequest searchRequest = new SearchRequest(elasticSearchIndexConfig.getArticleSearchIndexName());
         searchRequest.types(EsConstant.DEFAULT_TYPE);

@@ -7,6 +7,7 @@ import com.cxytiandi.kittycloud.search.api.request.ArticleIndexSaveRequest;
 import com.cxytiandi.kittycloud.search.api.request.ArticleIndexSearchRequest;
 import com.cxytiandi.kittycloud.search.api.response.ArticleIndexResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,6 @@ public interface ArticleIndexRemoteService {
      * @return
      */
     @GetMapping("/articles")
-    ResponseData<Page<ArticleIndexResponse>> searchArticleIndex(ArticleIndexSearchRequest request);
+    ResponseData<Page<ArticleIndexResponse>> searchArticleIndex(@SpringQueryMap ArticleIndexSearchRequest request);
 
 }

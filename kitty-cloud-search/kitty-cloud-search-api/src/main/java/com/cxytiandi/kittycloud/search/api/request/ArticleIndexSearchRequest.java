@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.search.api.request;
 
+import com.cxytiandi.kittycloud.common.base.PageEntity;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import java.io.Serializable;
  * @时间 2020-03-10 23:47
  */
 @Data
-public class ArticleIndexSearchRequest implements Serializable {
+public class ArticleIndexSearchRequest extends PageEntity implements Serializable {
 
     /**
      * 搜索词
@@ -29,15 +30,5 @@ public class ArticleIndexSearchRequest implements Serializable {
      * 标签
      */
     private String tag;
-
-    /**
-     * 页数
-     */
-    private int page;
-
-    /**
-     * 页大小
-     */
-    private int pageSize;
 
 }

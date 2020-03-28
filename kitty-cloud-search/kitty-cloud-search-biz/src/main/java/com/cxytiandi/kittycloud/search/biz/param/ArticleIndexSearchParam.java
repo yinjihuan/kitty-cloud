@@ -38,6 +38,6 @@ public class ArticleIndexSearchParam implements Serializable {
     /**
      * 页大小
      */
-    private int pageSize;
+    private int size;
 
 }
