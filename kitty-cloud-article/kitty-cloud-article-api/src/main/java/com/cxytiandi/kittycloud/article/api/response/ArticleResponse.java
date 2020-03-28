@@ -58,6 +58,11 @@ public class ArticleResponse {
     private String content;
 
     /**
+     * 文本内容
+     */
+    private String textContent;
+
+    /**
      * 热度值（点赞数+评论数+访问数）
      */
     private Integer heat;

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-12 20:01:04
  */
-@FeignClient(name = "kitty-cloud-comment-provider", fallbackFactory = ArticleRemoteServiceFallbackFactory.class)
+@FeignClient(name = "kitty-cloud-article-provider", fallbackFactory = ArticleRemoteServiceFallbackFactory.class)
 public interface ArticleRemoteService {
 
     /**

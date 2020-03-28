@@ -1,11 +1,13 @@
 package com.cxytiandi.kittycloud.article.provider.service;
 
 import com.cxytiandi.kitty.common.page.Page;
+import com.cxytiandi.kittycloud.article.api.request.ArticleQueryRequest;
 import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
 import com.cxytiandi.kittycloud.article.api.service.ArticleRemoteService;
 import com.cxytiandi.kittycloud.article.biz.bo.ArticleBO;
 import com.cxytiandi.kittycloud.article.biz.service.ArticleService;
 import com.cxytiandi.kittycloud.article.provider.convert.ArticleResponseConvert;
+import com.cxytiandi.kittycloud.common.base.PageEntity;
 import com.cxytiandi.kittycloud.common.base.Response;
 import com.cxytiandi.kittycloud.common.base.ResponseData;
 import com.cxytiandi.kittycloud.common.constant.DubboConstant;
@@ -42,31 +44,31 @@ public class ArticleRemoteServiceImpl implements ArticleRemoteService {
     }
 
     @Override
-    public ResponseData<Page<ArticleResponse>> listHotArticles(int page, int pageSize) {
-        Page<ArticleBO> articlesPage = articleService.listHotArticles(page, pageSize);
+    public ResponseData<Page<ArticleResponse>> listHotArticles(ArticleQueryRequest request) {
+        Page<ArticleBO> articlesPage = articleService.listHotArticles(request.getPage(), request.getSize());
 
         List<ArticleResponse> articleResponses = articlesPage.getList().stream().map(articleResponseConvert::convert).collect(Collectors.toList());
-        Page pageResponse = new Page(page, pageSize, articleResponses, articlesPage.getTotalRecords());
+        Page pageResponse = new Page(request.getPage(), request.getSize(), articleResponses, articlesPage.getTotalRecords());
 
         return Response.ok(pageResponse);
     }
 
     @Override
-    public ResponseData<Page<ArticleResponse>> listNewestArticles(int page, int pageSize) {
-        Page<ArticleBO> articlesPage = articleService.listNewestArticles(page, pageSize);
+    public ResponseData<Page<ArticleResponse>> listNewestArticles(ArticleQueryRequest request) {
+        Page<ArticleBO> articlesPage = articleService.listNewestArticles(request.getPage(), request.getSize());
 
         List<ArticleResponse> articleResponses = articlesPage.getList().stream().map(articleResponseConvert::convert).collect(Collectors.toList());
-        Page pageResponse = new Page(page, pageSize, articleResponses, articlesPage.getTotalRecords());
+        Page pageResponse = new Page(request.getPage(), request.getSize(), articleResponses, articlesPage.getTotalRecords());
 
         return Response.ok(pageResponse);
     }
 
     @Override
-    public ResponseData<Page<ArticleResponse>> listArticles(int page, int pageSize) {
-        Page<ArticleBO> articlesPage = articleService.listArticles(page, pageSize);
+    public ResponseData<Page<ArticleResponse>> listArticles(ArticleQueryRequest request) {
+        Page<ArticleBO> articlesPage = articleService.listArticles(request.getPage(), request.getSize());
 
         List<ArticleResponse> articleResponses = articlesPage.getList().stream().map(articleResponseConvert::convert).collect(Collectors.toList());
-        Page pageResponse = new Page(page, pageSize, articleResponses, articlesPage.getTotalRecords());
+        Page pageResponse = new Page(request.getPage(), request.getSize(), articleResponses, articlesPage.getTotalRecords());
 
         return Response.ok(pageResponse);
     }

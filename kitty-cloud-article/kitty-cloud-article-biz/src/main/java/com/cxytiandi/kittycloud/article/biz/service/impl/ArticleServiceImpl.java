@@ -97,7 +97,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Page<ArticleBO> listArticles(int page, int pageSize) {
         com.baomidou.mybatisplus.extension.plugins.pagination.Page queryPage = new com.baomidou.mybatisplus.extension.plugins.pagination.Page<>(page, pageSize);
-        IPage<ArticleDO> articleDoPage = articleDao.selectPage(queryPage, new QueryWrapper<>());
+        IPage<ArticleDO> articleDoPage = articleDao.selectPage(queryPage, null);
         List<ArticleBO> articleBos = articleDoPage.getRecords().stream().map( r -> {
             String nickname = articleManager.getNickname(r.getUserId());
             return articleBoConvert.convertPlus(r, nickname);
