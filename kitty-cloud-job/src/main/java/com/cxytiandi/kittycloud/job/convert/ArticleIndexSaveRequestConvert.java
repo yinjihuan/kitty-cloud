@@ -7,6 +7,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 /**
+ * 文章索引保存请求参数转换器
+ *
  * @作者 尹吉欢
  * @个人微信 jihuan900
  * @微信公众号 猿天地

@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
+ * ES索引构建参数
+ *
  * @作者 尹吉欢
  * @个人微信 jihuan900
  * @微信公众号 猿天地

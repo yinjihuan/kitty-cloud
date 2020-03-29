@@ -1,17 +1,5 @@
 package com.cxytiandi.kittycloud.job.service;
 
-//import com.cxytiandi.kitty.common.page.Page;
-//import com.cxytiandi.kittycloud.article.api.request.ArticleQueryRequest;
-//import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
-//import com.cxytiandi.kittycloud.article.api.service.ArticleRemoteService;
-//import com.cxytiandi.kittycloud.common.base.PageEntity;
-//import com.cxytiandi.kittycloud.common.base.ResponseData;
-//import com.cxytiandi.kittycloud.job.convert.ArticleIndexSaveRequestConvert;
-//import com.cxytiandi.kittycloud.job.param.EsIndexBuildParam;
-//import com.cxytiandi.kittycloud.job.template.AbstractEsIndexBuildTemplate;
-//import com.cxytiandi.kittycloud.search.api.request.ArticleIndexSaveRequest;
-//import com.cxytiandi.kittycloud.search.api.service.ArticleIndexRemoteService;
-//import com.google.common.collect.Lists;
 import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.article.api.request.ArticleQueryRequest;
 import com.cxytiandi.kittycloud.article.api.response.ArticleResponse;
