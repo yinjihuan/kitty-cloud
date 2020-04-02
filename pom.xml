@@ -131,6 +131,11 @@
                 <artifactId>kitty-spring-cloud-starter-rocketmq</artifactId>
                 <version>${kitty.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.cxytiandi</groupId>
+                <artifactId>kitty-spring-cloud-starter-lock</artifactId>
+                <version>${kitty.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
