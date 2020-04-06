@@ -19,4 +19,10 @@ public interface ArticleManager {
      */
     String getNickname(Long userId);
 
+    /**
+     * 获取分布式ID
+     * @return
+     */
+    String getDistributedId();
+
 }
