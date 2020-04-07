@@ -14,4 +14,6 @@ public class CommonConstant {
 
     public static int DEFAULT_PAGE_SIZE = 20;
 
+    public static final String DEFAULT_EMPTY_STR = "";
+
 }

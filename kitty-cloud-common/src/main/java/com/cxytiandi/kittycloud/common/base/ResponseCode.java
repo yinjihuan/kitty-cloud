@@ -27,6 +27,8 @@ public enum ResponseCode {
 	SERVER_ERROR_CODE(500, "服务器错误"),
 	/** 服务降级 **/
 	SERVER_DOWNGRADE_CODE(700, "服务降级"),
+	/** token 过期 **/
+	TOKEN_TIMEOUT_CODE(800, "登录信息过期"),
 
 
 	/** 用户服务 **/

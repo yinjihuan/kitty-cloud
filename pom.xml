@@ -23,6 +23,7 @@
         <kitty.version>1.0-SNAPSHOT</kitty.version>
         <swagger.version>1.9.1.RELEASE</swagger.version>
         <lombok.version>1.18.2</lombok.version>
+        <jjwt.version>0.7.0</jjwt.version>
     </properties>
 
     <parent>
@@ -140,6 +141,11 @@
                 <groupId>com.cxytiandi</groupId>
                 <artifactId>kitty-spring-cloud-starter-id</artifactId>
                 <version>${kitty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
