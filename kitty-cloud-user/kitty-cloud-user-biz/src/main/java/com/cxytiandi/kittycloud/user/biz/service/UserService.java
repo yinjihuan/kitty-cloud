@@ -16,9 +16,17 @@ public interface UserService {
 
     /**
      * 获取用户
-     * @param id
+     * @param id 用户ID
      * @return
      */
     UserBO getUser(Long id);
+
+    /**
+     * 用户登录
+     * @param username 用户名
+     * @param pass 密码
+     * @return
+     */
+    String login(String username, String pass);
 
 }

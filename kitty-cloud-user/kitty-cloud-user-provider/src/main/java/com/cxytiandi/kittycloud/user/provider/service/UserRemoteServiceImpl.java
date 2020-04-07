@@ -41,7 +41,7 @@ public class UserRemoteServiceImpl implements UserRemoteService {
 
     @Override
     public ResponseData<String> login(UserLoginRequest loginRequest) {
-        return Response.ok("xxxxxxxxx");
+        return Response.ok(userService.login(loginRequest.getUsername(), loginRequest.getPass()));
     }
 
 }

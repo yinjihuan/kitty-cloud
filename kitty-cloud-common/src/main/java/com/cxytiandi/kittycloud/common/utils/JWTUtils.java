@@ -84,9 +84,9 @@ public class JWTUtils {
 			return new JWTResult(false, null, "token已过期", ResponseCode.TOKEN_TIMEOUT_CODE.getCode());
 		} catch (SignatureException e) {
 			// 在解析JWT字符串时，如果密钥不正确，将会解析失败，抛出SignatureException异常，说明该JWT字符串是伪造的
-			return new JWTResult(false, null, "非法请求", ResponseCode.FORBIDDEN.getCode());
+			return new JWTResult(false, null, "非法请求", ResponseCode.FORBIDDEN_CODE.getCode());
 		} catch (Exception e) {
-			return new JWTResult(false, null, "非法请求", ResponseCode.FORBIDDEN.getCode());
+			return new JWTResult(false, null, "非法请求", ResponseCode.FORBIDDEN_CODE.getCode());
 		}
 	}
 
