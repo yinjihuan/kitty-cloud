@@ -2,11 +2,9 @@ package com.cxytiandi.kittycloud.user.biz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
-import com.cxytiandi.kittycloud.common.constant.CommonConstant;
 import com.cxytiandi.kittycloud.common.exception.BizException;
-import com.cxytiandi.kittycloud.common.utils.JWTUtils;
+import com.cxytiandi.kittycloud.common.helper.JWTHelper;
 import com.cxytiandi.kittycloud.user.biz.bo.UserBO;
-import com.cxytiandi.kittycloud.user.biz.config.JwtRsaConfig;
 import com.cxytiandi.kittycloud.user.biz.convert.UserBoConvert;
 import com.cxytiandi.kittycloud.user.biz.dao.UserDao;
 import com.cxytiandi.kittycloud.user.biz.dataobject.UserDO;
@@ -14,8 +12,6 @@ import com.cxytiandi.kittycloud.user.biz.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
 
 /**
  * 用户业务接口实现
@@ -38,15 +34,7 @@ public class UserServiceImpl implements UserService {
     private UserBoConvert userBoConvert;
 
     @Autowired
-    private JwtRsaConfig jwtRsaConfig;
-
-    private JWTUtils jwtUtils;
-
-    @PostConstruct
-    public void init() {
-        // 根据指定的算法参数初始化JWT工具类
-        jwtUtils = JWTUtils.getInstance(jwtRsaConfig.getModulus(), jwtRsaConfig.getPrivateExponent(), jwtRsaConfig.getPublicExponent());
-    }
+    private JWTHelper jwtHelper;
 
     @Override
     public UserBO getUser(Long id) {
@@ -73,7 +61,7 @@ public class UserServiceImpl implements UserService {
             throw new BizException(ResponseCode.USER_LOGIN_ERROR_CODE);
         }
 
-        return jwtUtils.getToken(userDO.getId().toString());
+        return jwtHelper.getToken(userDO.getId().toString());
     }
 
 }
