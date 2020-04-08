@@ -1,4 +1,4 @@
-package com.cxytiandi.kittycloud.user.biz.config;
+package com.cxytiandi.kittycloud.common.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

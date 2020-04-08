@@ -1,9 +1,7 @@
-package com.cxytiandi.kittycloud.common.config;
+package com.cxytiandi.kittycloud.common.autoconfigure;
 
-import com.alibaba.csp.sentinel.adapter.servlet.callback.WebCallbackManager;
 import com.cxytiandi.kittycloud.common.aop.RemoteServiceAspect;
 import com.cxytiandi.kittycloud.common.exception.GlobalExceptionHandler;
-import com.cxytiandi.kittycloud.common.handler.KittyCloudUrlBlockHandler;
 import com.cxytiandi.kittycloud.common.helper.ApplicationContextHelper;
 import com.github.structlog4j.StructLog4J;
 import com.github.structlog4j.json.JsonFormatter;
@@ -44,4 +42,5 @@ public class CommonBeanAutoConfigure {
     public ApplicationContextHelper applicationContextHelper() {
         return new ApplicationContextHelper();
     }
+
 }

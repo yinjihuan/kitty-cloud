@@ -1,49 +1,27 @@
-package com.cxytiandi.kittycloud.common.utils;
+package com.cxytiandi.kittycloud.common.helper;
+
+import com.cxytiandi.kittycloud.common.base.ResponseCode;
+import com.cxytiandi.kittycloud.common.config.JwtRsaConfig;
+import com.cxytiandi.kittycloud.common.utils.RSAUtils;
+import io.jsonwebtoken.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
 
+public class JWTHelper {
+	private RSAPrivateKey priKey;
+	private RSAPublicKey pubKey;
 
-import com.cxytiandi.kittycloud.common.base.ResponseCode;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
-
-/**
- * API调用认证工具类，采用RSA加密
- * @author yinjihuan
- *
- */
-public class JWTUtils {
-	private static RSAPrivateKey priKey;
-	private static RSAPublicKey pubKey;
-
-	private static class SingletonHolder {
-		private static final JWTUtils INSTANCE = new JWTUtils();
+	public JWTHelper(JwtRsaConfig jwtRsaConfig) {
+		priKey = RSAUtils.getPrivateKey(jwtRsaConfig.getModulus(), jwtRsaConfig.getPrivateExponent());
+		pubKey = RSAUtils.getPublicKey(jwtRsaConfig.getModulus(), jwtRsaConfig.getPublicExponent());
 	}
 
-	public synchronized static JWTUtils getInstance(String modulus, String privateExponent, String publicExponent) {
-		if (priKey == null && pubKey == null) {
-			priKey = RSAUtils.getPrivateKey(modulus, privateExponent);
-			pubKey = RSAUtils.getPublicKey(modulus, publicExponent);
-		}
-		return SingletonHolder.INSTANCE;
-	}
-
-	public synchronized static void reload(String modulus, String privateExponent, String publicExponent) {
+	public void reload(String modulus, String privateExponent, String publicExponent) {
 		priKey = RSAUtils.getPrivateKey(modulus, privateExponent);
 		pubKey = RSAUtils.getPublicKey(modulus, publicExponent);
-	}
-	
-	public synchronized static JWTUtils getInstance() {
-		if (priKey == null && pubKey == null) {
-			priKey = RSAUtils.getPrivateKey(RSAUtils.modulus, RSAUtils.private_exponent);
-			pubKey = RSAUtils.getPublicKey(RSAUtils.modulus, RSAUtils.public_exponent);
-		}
-		return SingletonHolder.INSTANCE;
 	}
 	
 	/**
@@ -52,7 +30,7 @@ public class JWTUtils {
 	 * @param exp 失效时间，单位分钟
 	 * @return
 	 */
-	public static String getToken(String uid, int exp) {
+	public String getToken(String uid, int exp) {
 		long endTime = System.currentTimeMillis() + 1000 * 60 * exp;
 		return Jwts.builder().setSubject(uid).setExpiration(new Date(endTime))
 				.signWith(SignatureAlgorithm.RS512, priKey).compact();

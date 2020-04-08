@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.cxytiandi.kittycloud.common.config.CommonBeanAutoConfigure,\
-com.cxytiandi.kittycloud.common.config.UrlBlockHandlerAutoConfigure
+com.cxytiandi.kittycloud.common.autoconfigure.CommonBeanAutoConfigure,\
+com.cxytiandi.kittycloud.common.autoconfigure.UrlBlockHandlerAutoConfigure,\
+com.cxytiandi.kittycloud.common.autoconfigure.JWTAutoConfigure
