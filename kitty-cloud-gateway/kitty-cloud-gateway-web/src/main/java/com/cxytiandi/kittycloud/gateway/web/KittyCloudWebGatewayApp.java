@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.gateway.web;
 
+import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -16,6 +17,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
  * @时间 2020-02-17 20:01:04
  */
 @EnableZuulProxy
+@EnableCreateCacheAnnotation
 @EnableDiscoveryClient
 @SpringBootApplication
 public class KittyCloudWebGatewayApp {
