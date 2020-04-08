@@ -32,11 +32,11 @@ public class ArticleManagerImpl implements ArticleManager {
 
     // @Reference dubbo调用， @Autowired Feign调用
     @Autowired
-    // @Reference(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP)
+    // @Reference(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP, check = false)
     private UserRemoteService userRemoteService;
 
     //@Autowired
-    @Reference(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP)
+    @Reference(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP, check = false)
     private DistributedIdLeafSnowflakeRemoteService distributedIdLeafSnowflakeRemoteService;
 
     //@Cached(name = "ArticleManagerImpl:getNickname:", key = "#userId", expire = 1, timeUnit = TimeUnit.DAYS)
