@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.common.config;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -20,16 +21,19 @@ public class JwtRsaConfig {
     /**
      * 模
      */
+    @JsonAlias("kitty.cloud.jwt.rsa.modulus")
     private String modulus;
 
     /**
      * 私钥
      */
+    @JsonAlias("kitty.cloud.jwt.rsa.privateExponent")
     private String privateExponent;
 
     /**
      * 公钥
      */
+    @JsonAlias("kitty.cloud.jwt.rsa.publicExponent")
     private String publicExponent;
 
 }
