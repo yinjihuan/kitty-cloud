@@ -17,6 +17,6 @@ public class NacosConstant {
      */
     public static final String BIZ_GROUP = "BIZ_GROUP";
 
-    public static final String SEARCH_ES_BIZ = "kitty-cloud-search-elasticsearch-biz.properties";
+    public static final String JWT_RSA_BIZ = "kitty-cloud-user-jwt-rsa-biz.properties";
 
 }
