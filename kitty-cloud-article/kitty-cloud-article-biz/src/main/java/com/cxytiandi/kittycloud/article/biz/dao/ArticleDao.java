@@ -1,8 +1,7 @@
 package com.cxytiandi.kittycloud.article.biz.dao;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.cxytiandi.kittycloud.article.biz.dataobject.ArticleDO;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 文章DAO
@@ -14,7 +13,38 @@ import org.apache.ibatis.annotations.Mapper;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-12 20:01:04
  */
-@Mapper
-public interface ArticleDao extends BaseMapper<ArticleDO> {
+
+public interface ArticleDao {
+
+    /**
+     * 获取文章
+     * @param id 文章ID
+     * @return
+     */
+    ArticleDO getById(Long id);
+
+    /**
+     * 热门文章
+     * @param page  页数
+     * @param pageSize 页大小
+     * @return
+     */
+    IPage<ArticleDO> listHotArticles(int page, int pageSize);
+
+    /**
+     * 最新文章
+     * @param page  页数
+     * @param pageSize  页大小
+     * @return
+     */
+    IPage<ArticleDO> listNewestArticles(int page, int pageSize);
+
+    /**
+     * 所有文章
+     * @param page  页数
+     * @param pageSize  页大小
+     * @return
+     */
+    IPage<ArticleDO> listArticles(int page, int pageSize);
 
 }

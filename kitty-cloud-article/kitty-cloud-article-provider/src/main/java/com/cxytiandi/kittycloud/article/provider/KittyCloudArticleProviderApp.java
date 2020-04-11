@@ -19,7 +19,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @时间 2020-02-12 20:01:04
  */
 @EnableSwagger2Doc
-@MapperScan("com.cxytiandi.kittycloud.article.biz.dao")
+@MapperScan("com.cxytiandi.kittycloud.article.biz.mapper")
 @EnableDiscoveryClient
 @EnableCreateCacheAnnotation
 @EnableMethodCache(basePackages = "com.cxytiandi.kittycloud.article.biz.manager")
