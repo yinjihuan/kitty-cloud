@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.cxytiandi.kittycloud.article.api.config.RemoteServiceAutoConfigure
+com.cxytiandi.kittycloud.article.api.autoconfigure.RemoteServiceAutoConfigure

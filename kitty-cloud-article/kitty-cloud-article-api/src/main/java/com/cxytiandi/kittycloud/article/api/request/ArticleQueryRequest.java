@@ -4,6 +4,8 @@ import com.cxytiandi.kittycloud.common.base.PageEntity;
 import lombok.Data;
 
 /**
+ * 文章查询参数
+ *
  * @作者 尹吉欢
  * @个人微信 jihuan900
  * @微信公众号 猿天地

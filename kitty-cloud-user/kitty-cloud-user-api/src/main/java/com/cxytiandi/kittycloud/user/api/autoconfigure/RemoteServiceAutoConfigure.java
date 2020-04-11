@@ -1,4 +1,4 @@
-package com.cxytiandi.kittycloud.article.api.config;
+package com.cxytiandi.kittycloud.user.api.autoconfigure;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,8 +13,8 @@ import org.springframework.context.annotation.ComponentScan;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-13 20:44:04
  */
-@EnableFeignClients("com.cxytiandi.kittycloud.article.api")
-@ComponentScan("com.cxytiandi.kittycloud.article.api")
+@EnableFeignClients("com.cxytiandi.kittycloud.user.api")
+@ComponentScan("com.cxytiandi.kittycloud.user.api")
 public class RemoteServiceAutoConfigure {
 
 }
