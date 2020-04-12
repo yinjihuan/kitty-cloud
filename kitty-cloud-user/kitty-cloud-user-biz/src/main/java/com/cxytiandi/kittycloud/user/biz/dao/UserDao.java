@@ -1,8 +1,6 @@
 package com.cxytiandi.kittycloud.user.biz.dao;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cxytiandi.kittycloud.user.biz.dataobject.UserDO;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 用户DAO
@@ -14,7 +12,21 @@ import org.apache.ibatis.annotations.Mapper;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-13 20:44:04
  */
-@Mapper
-public interface UserDao extends BaseMapper<UserDO> {
+public interface UserDao {
+
+    /**
+     * 获取用户信息
+     * @param id 用户ID
+     * @return 用户DO
+     */
+    UserDO getById(Long id);
+
+    /**
+     * 用户登录
+     * @param username 用户名
+     * @param pass 密码
+     * @return 用户DO
+     */
+    UserDO getByUsernameAndPass(String username, String pass);
 
 }

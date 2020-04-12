@@ -1,6 +1,5 @@
 package com.cxytiandi.kittycloud.user.biz.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cxytiandi.kittycloud.common.base.ResponseCode;
 import com.cxytiandi.kittycloud.common.exception.BizException;
 import com.cxytiandi.kittycloud.common.helper.JWTHelper;
@@ -43,7 +42,7 @@ public class UserServiceImpl implements UserService {
             throw new BizException(ResponseCode.PARAM_ERROR_CODE, "id不能为空");
         }
 
-        UserDO userDO = userDao.selectById(id);
+        UserDO userDO = userDao.getById(id);
         if (userDO == null) {
             throw new BizException(ResponseCode.NOT_FOUND_CODE);
         }
@@ -53,10 +52,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String login(String username, String pass) {
-        QueryWrapper<UserDO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("mobile", username).eq("pass", pass);
-
-        UserDO userDO = userDao.selectOne(queryWrapper);
+        UserDO userDO = userDao.getByUsernameAndPass(username, pass);
         if (userDO == null) {
             throw new BizException(ResponseCode.USER_LOGIN_ERROR_CODE);
         }
