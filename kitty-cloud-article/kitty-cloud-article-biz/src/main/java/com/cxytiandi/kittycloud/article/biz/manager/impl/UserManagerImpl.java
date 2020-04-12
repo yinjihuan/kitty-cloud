@@ -31,7 +31,7 @@ public class UserManagerImpl implements UserManager {
     // @Reference(version = DubboConstant.VERSION_V100, group = DubboConstant.DEFAULT_GROUP, check = false)
     private UserRemoteService userRemoteService;
 
-    //@Cached(name = "ArticleManagerImpl:getNickname:", key = "#userId", expire = 1, timeUnit = TimeUnit.DAYS)
+    //@Cached(name = "UserManagerImpl:getNickname:", key = "#userId", expire = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public String getNickname(Long userId) {
         ResponseData<UserResponse> user = userRemoteService.getUser(userId);

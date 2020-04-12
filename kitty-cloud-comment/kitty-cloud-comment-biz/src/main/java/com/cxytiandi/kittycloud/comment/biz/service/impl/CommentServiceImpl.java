@@ -10,7 +10,7 @@ import com.cxytiandi.kittycloud.comment.biz.dao.CommentDao;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentDocument;
 import com.cxytiandi.kittycloud.comment.biz.document.CommentReplyDocument;
 import com.cxytiandi.kittycloud.comment.biz.enums.CommentBizTypeEnum;
-import com.cxytiandi.kittycloud.comment.biz.manager.CommentManager;
+import com.cxytiandi.kittycloud.comment.biz.manager.UserManager;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentQueryParam;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentReplySaveParam;
 import com.cxytiandi.kittycloud.comment.biz.param.CommentSaveParam;
@@ -55,7 +55,7 @@ public class CommentServiceImpl implements CommentService {
     private CommentBOConvert commentBOConvert;
 
     @Autowired
-    private CommentManager commentManager;
+    private UserManager userManager;
 
     @Idempotent(firstLevelExpireTime = 100)
     @Override
@@ -115,7 +115,7 @@ public class CommentServiceImpl implements CommentService {
         long total = commentDao.countComment(param);
         List<CommentDocument> commentDocuments = commentDao.listComments(param);
         List<CommentBO> commentBOList = commentDocuments.stream().map(c -> {
-            String nickname = commentManager.getNickname(c.getUserId());
+            String nickname = userManager.getNickname(c.getUserId());
             // todo: 回复数量在比较多的情况下直接查询出来性能不好，后期可以单独维护一个回复数量的字段或者使用aggregate查询
             List<CommentReplyDocument> replys = commentDao.getComment(c.getId()).getReplys();
             int replyCount = replys == null ? 0 : replys.size();

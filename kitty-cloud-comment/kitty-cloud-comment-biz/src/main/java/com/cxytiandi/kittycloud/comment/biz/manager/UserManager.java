@@ -1,7 +1,7 @@
 package com.cxytiandi.kittycloud.comment.biz.manager;
 
 /**
- * 评论Manager接口
+ * 用户Manager接口
  *
  * @作者 尹吉欢
  * @个人微信 jihuan900
@@ -10,7 +10,7 @@ package com.cxytiandi.kittycloud.comment.biz.manager;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-16 16:02
  */
-public interface CommentManager {
+public interface UserManager {
 
     /**
      * 获取用户昵称
