@@ -1,6 +1,7 @@
 package com.cxytiandi.kittycloud.article.provider;
 
-import com.cxytiandi.kittycloud.article.biz.manager.ArticleManager;
+import com.cxytiandi.kittycloud.article.biz.manager.DistributedIdManager;
+import com.cxytiandi.kittycloud.article.biz.manager.UserManager;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
+ * 分布式ID测试
+ *
  * @作者 尹吉欢
  * @个人微信 jihuan900
  * @微信公众号 猿天地
@@ -18,14 +21,14 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ArticleManagerTest {
+public class DistributedIdManagerTest {
 
     @Autowired
-    private ArticleManager articleManager;
+    private DistributedIdManager distributedIdManager;
 
     @Test
     public void testGetDistributedId() {
-        String distributedId = articleManager.getDistributedId();
+        String distributedId = distributedIdManager.getDistributedId();
         Assert.assertNotNull(distributedId);
     }
 }
