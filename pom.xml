@@ -17,6 +17,7 @@
         <module>kitty-cloud-search</module>
         <module>kitty-cloud-job</module>
         <module>kitty-cloud-mqconsume</module>
+        <module>kitty-cloud-aggregation</module>
     </modules>
 
     <properties>
