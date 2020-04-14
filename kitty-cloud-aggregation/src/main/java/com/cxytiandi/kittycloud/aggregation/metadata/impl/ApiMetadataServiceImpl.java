@@ -3,6 +3,7 @@ package com.cxytiandi.kittycloud.aggregation.metadata.impl;
 import com.cxytiandi.kittycloud.aggregation.metadata.ApiMetadataService;
 import com.cxytiandi.kittycloud.aggregation.request.HttpAggregationRequest;
 import com.cxytiandi.kittycloud.aggregation.request.HttpRequest;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,11 +26,13 @@ public class ApiMetadataServiceImpl implements ApiMetadataService {
 
         List<HttpRequest> httpRequests = new ArrayList<>();
         HttpRequest httpRequest = new HttpRequest();
-        httpRequest.setUri("http://localhost:8080/");
+        httpRequest.setUri("http://kitty-cloud-article-provider/articles?page=1&size=10");
+        httpRequest.setMethod(HttpMethod.GET.name());
         httpRequests.add(httpRequest);
 
         httpRequest = new HttpRequest();
-        httpRequest.setUri("http://localhost:8080/");
+        httpRequest.setUri("http://kitty-cloud-article-provider/articles?page=1&size=10");
+        httpRequest.setMethod(HttpMethod.GET.name());
         httpRequests.add(httpRequest);
 
         httpAggregationRequest.setHttpRequests(httpRequests);

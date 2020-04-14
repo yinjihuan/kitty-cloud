@@ -15,4 +15,6 @@ public class HttpRequest {
 
     private String uri;
 
+    private String method;
+
 }

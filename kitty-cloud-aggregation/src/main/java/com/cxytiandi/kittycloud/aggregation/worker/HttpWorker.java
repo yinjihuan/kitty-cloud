@@ -1,10 +1,9 @@
 package com.cxytiandi.kittycloud.aggregation.worker;
 
-import com.cxytiandi.kittycloud.aggregation.request.HttpAggregationRequest;
+import com.cxytiandi.kittycloud.aggregation.invoker.HttpApiInvoker;
 import com.cxytiandi.kittycloud.aggregation.request.HttpRequest;
+import com.cxytiandi.kittycloud.common.helper.ApplicationContextHelper;
 import com.jd.platform.async.callback.IWorker;
-
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,17 +16,12 @@ import java.util.Map;
  */
 public class HttpWorker implements IWorker<HttpRequest, Map> {
 
+    private HttpApiInvoker httpApiInvoker;
+
     @Override
     public Map action(HttpRequest httpRequest) {
-        System.out.println("xxxxxxx");
-        Map<String, Object> map = new HashMap<>();
-        map.put("username", "yinjihuan");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return map;
+        httpApiInvoker = ApplicationContextHelper.getBean(HttpApiInvoker.class);
+        return httpApiInvoker.invoke(httpRequest);
     }
 
     @Override

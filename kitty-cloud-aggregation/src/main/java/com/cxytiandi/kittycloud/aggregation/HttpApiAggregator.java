@@ -30,38 +30,37 @@ public class HttpApiAggregator {
     @Autowired
     private ApiMetadataService apiMetadataService;
 
-    public void apiAggregator(String api) {
+    public Object apiAggregator(String api) {
         HttpAggregationRequest httpAggregationRequest = apiMetadataService.getHttpAggregationRequest(api);
         List<HttpRequest> httpRequests = httpAggregationRequest.getHttpRequests();
-        List<HttpWorker> httpWorkers = httpRequests.stream().map(req -> {
-            HttpWorker httpWorker = new HttpWorker();
-            return httpWorker;
-        }).collect(Collectors.toList());
 
-        List<WorkerWrapper> workerWrappers = httpWorkers.stream().map(httpWorker -> {
+        List<WorkerWrapper> workerWrappers = httpRequests.stream().map(httpRequest -> {
+            HttpWorker httpWorker = new HttpWorker();
              return new WorkerWrapper.Builder<HttpRequest, Map>()
-                    .worker(httpWorker)
-                    .build();
+                     .worker(httpWorker)
+                     .param(httpRequest)
+                     .build();
         }).collect(Collectors.toList());
 
         long now = SystemClock.now();
         System.out.println("begin-" + now);
         try {
-            Async.beginWork(1500, workerWrappers.toArray(new WorkerWrapper[workerWrappers.size()]));
+            Async.beginWork(100000, workerWrappers.toArray(new WorkerWrapper[workerWrappers.size()]));
             List<WorkResult> workResults = workerWrappers.stream().map(wrapper -> {
                 WorkResult workResult = wrapper.getWorkResult();
                 System.out.println(workResult);
                 return workResult;
             }).collect(Collectors.toList());
+            System.out.println("end-" + SystemClock.now());
+            System.err.println("cost-" + (SystemClock.now() - now));
+            return workResults;
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("end-" + SystemClock.now());
-        System.err.println("cost-" + (SystemClock.now() - now));
-        Async.shutDown();
 
+        return "";
     }
 
 }
