@@ -1,9 +1,8 @@
-package com.cxytiandi.kittycloud.aggregation;
+package com.cxytiandi.kittycloud.aggregation.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.cxytiandi.kitty.common.json.JsonUtils;
-import com.cxytiandi.kittycloud.aggregation.metadata.ApiMetadataService;
+import com.cxytiandi.kittycloud.aggregation.service.ApiMetaDataService;
 import com.cxytiandi.kittycloud.aggregation.request.HttpAggregationRequest;
 import com.cxytiandi.kittycloud.aggregation.request.HttpRequest;
 import com.cxytiandi.kittycloud.aggregation.worker.HttpWorker;
@@ -11,7 +10,6 @@ import com.jd.platform.async.executor.Async;
 import com.jd.platform.async.executor.timer.SystemClock;
 import com.jd.platform.async.worker.WorkResult;
 import com.jd.platform.async.wrapper.WorkerWrapper;
-import com.netflix.ribbon.proxy.annotation.Http;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -34,10 +32,10 @@ import java.util.stream.Collectors;
 public class HttpApiAggregator {
 
     @Autowired
-    private ApiMetadataService apiMetadataService;
+    private ApiMetaDataService apiMetaDataService;
 
-    public Object apiAggregator(String api, HttpServletRequest request) {
-        HttpAggregationRequest httpAggregationRequest = apiMetadataService.getHttpAggregationRequest(api);
+    public Object apiAggregator(String apiName, HttpServletRequest request) {
+        HttpAggregationRequest httpAggregationRequest = apiMetaDataService.getHttpAggregationRequest(apiName);
         List<HttpRequest> httpRequests = httpAggregationRequest.getHttpRequests();
 
         httpRequests.forEach( req -> {

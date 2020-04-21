@@ -1,6 +1,6 @@
 package com.cxytiandi.kittycloud.aggregation.controller;
 
-import com.cxytiandi.kittycloud.aggregation.HttpApiAggregator;
+import com.cxytiandi.kittycloud.aggregation.service.HttpApiAggregator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +24,9 @@ public class ApiAggregationRestController {
     @Autowired
     private HttpServletRequest request;
 
-    @GetMapping("/test")
-    public Object test() {
-        return httpApiAggregator.apiAggregator("", request);
+    @GetMapping("/api/aggregation")
+    public Object aggregation(String apiName) {
+        return httpApiAggregator.apiAggregator(apiName, request);
     }
+
 }

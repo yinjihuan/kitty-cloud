@@ -1,6 +1,7 @@
-package com.cxytiandi.kittycloud.aggregation.invoker;
+package com.cxytiandi.kittycloud.aggregation.invoker.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.cxytiandi.kittycloud.aggregation.invoker.HttpApiInvoker;
 import com.cxytiandi.kittycloud.aggregation.request.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
