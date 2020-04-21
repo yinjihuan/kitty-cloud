@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @作者 尹吉欢
  * @个人微信 jihuan900
@@ -19,8 +21,11 @@ public class ApiAggregationRestController {
     @Autowired
     private HttpApiAggregator httpApiAggregator;
 
+    @Autowired
+    private HttpServletRequest request;
+
     @GetMapping("/test")
     public Object test() {
-        return httpApiAggregator.apiAggregator("");
+        return httpApiAggregator.apiAggregator("", request);
     }
 }

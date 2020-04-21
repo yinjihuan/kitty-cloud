@@ -11,9 +11,13 @@ import com.jd.platform.async.executor.Async;
 import com.jd.platform.async.executor.timer.SystemClock;
 import com.jd.platform.async.worker.WorkResult;
 import com.jd.platform.async.wrapper.WorkerWrapper;
+import com.netflix.ribbon.proxy.annotation.Http;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
@@ -32,21 +36,47 @@ public class HttpApiAggregator {
     @Autowired
     private ApiMetadataService apiMetadataService;
 
-    public Object apiAggregator(String api) {
+    public Object apiAggregator(String api, HttpServletRequest request) {
         HttpAggregationRequest httpAggregationRequest = apiMetadataService.getHttpAggregationRequest(api);
         List<HttpRequest> httpRequests = httpAggregationRequest.getHttpRequests();
+
+        httpRequests.forEach( req -> {
+            Map paramsMap = new HashMap<>();
+            String params = req.getParams();
+            if (StringUtils.hasText(params)) {
+                paramsMap = JSONObject.parseObject(params, Map.class);
+            }
+            Set<String> paramKeys = paramsMap.keySet();
+            for(String k : paramKeys) {
+                Object value = paramsMap.get(k);
+                if (value.toString().startsWith("$request")) {
+                    String param = value.toString().split("\\.")[1];
+                    String parameter = request.getParameter(param);
+                    paramsMap.put(k, parameter);
+                }
+
+            }
+            req.setParamsValueMap(paramsMap);
+        });
+
         Map<String, WorkResult<JSONObject>> workResultMap = new HashMap<>();
         Map<WorkerWrapper, String> workerWrapperStringMap = new HashMap<>();
+        Map<String, WorkerWrapper> workerWrapperStringMap2 = new HashMap<>();
 
-        List<WorkerWrapper> workerWrappers = httpRequests.stream().map(httpRequest -> {
-            HttpWorker httpWorker = new HttpWorker();
-            WorkerWrapper<HttpRequest, JSONObject> build = new WorkerWrapper.Builder<HttpRequest, JSONObject>()
-                    .worker(httpWorker)
-                    .param(httpRequest)
-                    .build();
-            workerWrapperStringMap.put(build, httpRequest.getName());
-            return  build;
-        }).collect(Collectors.toList());
+        List<HttpRequest> requests = httpRequests.stream().filter(hr -> StringUtils.isEmpty(hr.getRef())).collect(Collectors.toList());
+        List<WorkerWrapper<HttpRequest, JSONObject>> workerWrappers = a(requests, httpRequests, workerWrapperStringMap2);
+
+
+        for (HttpRequest httpRequest : httpRequests) {
+            WorkerWrapper<HttpRequest, JSONObject> workerWrapper = workerWrapperStringMap2.get(httpRequest.getName());
+
+            WorkerWrapper<HttpRequest, JSONObject> workerWrapper1 = workerWrapperStringMap2.get(httpRequest.getRef());
+            if (workerWrapper1 != null) {
+                httpRequest.setWorkResult(workerWrapper1.getWorkResult());
+            }
+
+            workerWrapper.setParam(httpRequest);
+        }
 
         long now = SystemClock.now();
         System.out.println("begin-" + now);
@@ -62,7 +92,6 @@ public class HttpApiAggregator {
             System.out.println("end-" + SystemClock.now());
             System.err.println("cost-" + (SystemClock.now() - now));
 
-            JSONObject result = new JSONObject();
             String responseMetadata = "{\"$code\":{\"type\":\"int\",\"path\":\"getArticles#code\"},\"$message\":{\"type\":\"String\",\"path\":\"getArticles#message\"},\"$data\":{\"$articleResp\":{\"type\":\"Entity\",\"path\":\"getArticles#data\",\"fields\":[\"start\",\"limit\",\"list\"],\"$articleResp3\":{\"type\":\"Entity\",\"path\":\"getArticles#data\",\"fields\":[\"start\"]},\"$myName\":{\"type\":\"int\",\"path\":\"getArticles#code\"}},\"$articleResp2\":{\"type\":\"Entity\",\"path\":\"getArticles#data\",\"fields\":[\"start\"]}}}";
             return formatResult(responseMetadata, workResultMap);
 
@@ -73,6 +102,34 @@ public class HttpApiAggregator {
         }
 
         return "";
+    }
+
+    private List<WorkerWrapper<HttpRequest, JSONObject>> a(List<HttpRequest> httpRequests, List<HttpRequest> allHttpRequests,  Map<String, WorkerWrapper> workerWrapperStringMap2) {
+        // 创建Ref为空的，优先执行
+        List<WorkerWrapper<HttpRequest, JSONObject>> list = httpRequests.stream().map(req -> {
+            List<HttpRequest> refList = allHttpRequests.stream().filter(h -> req.getName().equals(h.getRef())).collect(Collectors.toList());
+            HttpWorker httpWorker = new HttpWorker();
+            if (CollectionUtils.isEmpty(refList)) {
+                WorkerWrapper<HttpRequest, JSONObject> build = new WorkerWrapper.Builder<HttpRequest, JSONObject>()
+                        .worker(httpWorker)
+                        .param(req)
+                        .build();
+                workerWrapperStringMap2.put(req.getName(), build);
+                return build;
+            } else {
+                List<WorkerWrapper<HttpRequest, JSONObject>> workerWrappers = a(refList, allHttpRequests, workerWrapperStringMap2);
+                WorkerWrapper<HttpRequest, JSONObject> build = new WorkerWrapper.Builder<HttpRequest, JSONObject>()
+                        .worker(httpWorker)
+                        .next(workerWrappers.toArray(new WorkerWrapper[workerWrappers.size()]))
+                        .param(req)
+                        .build();
+                workerWrapperStringMap2.put(req.getName(), build);
+                return build;
+            }
+
+        }).collect(Collectors.toList());
+
+        return list;
     }
 
     private JSONObject formatResult(String responseMetadata, Map<String, WorkResult<JSONObject>> workResultMap) {

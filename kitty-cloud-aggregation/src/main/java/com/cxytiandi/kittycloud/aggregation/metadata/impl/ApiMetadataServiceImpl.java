@@ -27,14 +27,17 @@ public class ApiMetadataServiceImpl implements ApiMetadataService {
         List<HttpRequest> httpRequests = new ArrayList<>();
         HttpRequest httpRequest = new HttpRequest();
         httpRequest.setName("getArticles");
-        httpRequest.setUri("http://kitty-cloud-article-provider/articles?page=1&size=10");
+        httpRequest.setUri("http://kitty-cloud-article-provider/articles");
         httpRequest.setMethod(HttpMethod.GET.name());
+        httpRequest.setParams("{\"page\":\"$request.page\",\"size\":\"$request.size\"}");
         httpRequests.add(httpRequest);
 
         httpRequest = new HttpRequest();
-        httpRequest.setName("getArticles");
-        httpRequest.setUri("http://kitty-cloud-article-provider/articles?page=1&size=10");
+        httpRequest.setName("getUsers");
+        httpRequest.setUri("http://kitty-cloud-user-provider/users/{id}");
         httpRequest.setMethod(HttpMethod.GET.name());
+        httpRequest.setParams("{\"id\":\"getArticles#data.articleResp.list.userId\"}");
+        httpRequest.setRef("getArticles");
         httpRequests.add(httpRequest);
 
         httpAggregationRequest.setHttpRequests(httpRequests);

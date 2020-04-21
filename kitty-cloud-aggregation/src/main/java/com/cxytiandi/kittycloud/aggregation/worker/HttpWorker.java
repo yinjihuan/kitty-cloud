@@ -5,9 +5,10 @@ import com.cxytiandi.kittycloud.aggregation.invoker.HttpApiInvoker;
 import com.cxytiandi.kittycloud.aggregation.request.HttpRequest;
 import com.cxytiandi.kittycloud.common.helper.ApplicationContextHelper;
 import com.jd.platform.async.callback.IWorker;
-import java.util.Map;
 
 /**
+ * Http 请求任务
+ *
  * @作者 尹吉欢
  * @个人微信 jihuan900
  * @微信公众号 猿天地
@@ -27,6 +28,6 @@ public class HttpWorker implements IWorker<HttpRequest, JSONObject> {
 
     @Override
     public JSONObject defaultValue() {
-        return null;
+        return new JSONObject();
     }
 }

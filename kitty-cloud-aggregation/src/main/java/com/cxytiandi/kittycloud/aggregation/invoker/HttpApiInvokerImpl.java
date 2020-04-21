@@ -8,9 +8,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @作者 尹吉欢
@@ -34,7 +37,24 @@ public class HttpApiInvokerImpl implements HttpApiInvoker {
     @Override
     public JSONObject invoke(HttpRequest httpRequest) {
         if (httpRequest.getMethod().equals(HttpMethod.GET.name())) {
-            ResponseEntity<JSONObject> responseEntity = loadBalanceRestTemplate.getForEntity(httpRequest.getUri(), JSONObject.class);
+
+            StringBuilder uri = new StringBuilder(httpRequest.getUri());
+            uri.append("?");
+            Set<String> paramKeys = httpRequest.getParamsValueMap().keySet();
+
+
+            for(String k : paramKeys) {
+                uri.append(k).append("={").append(k).append("}&");
+            }
+
+            if (uri.toString().endsWith("?")) {
+                uri.deleteCharAt(uri.lastIndexOf("?"));
+            }
+            if (uri.toString().endsWith("&")) {
+                uri.deleteCharAt(uri.lastIndexOf("&"));
+            }
+
+            ResponseEntity<JSONObject> responseEntity = loadBalanceRestTemplate.getForEntity(uri.toString(), JSONObject.class, httpRequest.getParamsValueMap());
             if (responseEntity.getStatusCode() == HttpStatus.OK) {
                 return responseEntity.getBody();
             }
