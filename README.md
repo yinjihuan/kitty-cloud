@@ -26,6 +26,18 @@ Spring Cloud 架构搭建的开源社区技术网站
 
 **[ElasticSearch](https://github.com/elastic/elasticsearch)**：ElasticSearch 是一个开源，分布式，RESTful搜索引擎。
 
+## 核心功能
+
+* 微服务架构（Spring Cloud & Spring Cloud Alibaba）
+* 支持RPC/HTTP双协议（Dubbo和Feign远程调用）
+* 分布式链路跟踪（Sleuth + ELK）
+* 熔断限流（基于Sentinel的熔断限流）
+* Cat监控（Mybatis, Feign, Dubbo, MongoDB, ElasticSearch等都有埋点监控）
+* 全局幂等（基于redisson的分布式锁 + 注解 + 多级存储的幂等组件）
+* 分布式ID分发（基于Leaf改造，扩展了RPC获取ID服务）
+* 分布式任务调度（基于XXL-JOB的任务调度）
+* MongoDB，ElasticSearch的使用（业务服务中使用）
+
 ## 项目文档
 
 * 文档地址：[http://cxytiandi.com](http://cxytiandi.com/blog/detail/36440)
