@@ -26,11 +26,13 @@ public class ApiMetadataServiceImpl implements ApiMetadataService {
 
         List<HttpRequest> httpRequests = new ArrayList<>();
         HttpRequest httpRequest = new HttpRequest();
+        httpRequest.setName("getArticles");
         httpRequest.setUri("http://kitty-cloud-article-provider/articles?page=1&size=10");
         httpRequest.setMethod(HttpMethod.GET.name());
         httpRequests.add(httpRequest);
 
         httpRequest = new HttpRequest();
+        httpRequest.setName("getArticles");
         httpRequest.setUri("http://kitty-cloud-article-provider/articles?page=1&size=10");
         httpRequest.setMethod(HttpMethod.GET.name());
         httpRequests.add(httpRequest);

@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.aggregation.invoker;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cxytiandi.kittycloud.aggregation.request.HttpRequest;
 
 import java.util.Map;
@@ -14,6 +15,6 @@ import java.util.Map;
  */
 public interface HttpApiInvoker {
 
-    Map invoke(HttpRequest httpRequest);
+    JSONObject invoke(HttpRequest httpRequest);
 
 }

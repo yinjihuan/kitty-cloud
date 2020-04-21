@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.aggregation;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cxytiandi.kittycloud.aggregation.request.HttpRequest;
 import com.cxytiandi.kittycloud.aggregation.worker.HttpWorker;
 import com.jd.platform.async.executor.Async;
@@ -31,7 +32,7 @@ public class Test {
         List<WorkerWrapper> workerWrappers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             HttpWorker httpWorker = httpWorkers.get(i);
-            WorkerWrapper<HttpRequest, Map> workerWrapper =  new WorkerWrapper.Builder<HttpRequest, Map>()
+            WorkerWrapper<HttpRequest, JSONObject> workerWrapper =  new WorkerWrapper.Builder<HttpRequest, JSONObject>()
                     .worker(httpWorker)
                     .build();
             workerWrappers.add(workerWrapper);

@@ -13,6 +13,8 @@ import lombok.Data;
 @Data
 public class HttpRequest {
 
+    private String name;
+
     private String uri;
 
     private String method;

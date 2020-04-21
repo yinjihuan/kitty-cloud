@@ -18,7 +18,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-02-13 20:44:04
  */
-@MapperScan("com.cxytiandi.kittycloud.user.biz.dao")
+@MapperScan("com.cxytiandi.kittycloud.user.biz.mapper")
 @EnableDiscoveryClient
 @EnableSwagger2Doc
 @EnableCreateCacheAnnotation

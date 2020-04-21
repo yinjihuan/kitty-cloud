@@ -3,6 +3,7 @@ package com.cxytiandi.kittycloud.aggregation.autoconfigure;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -16,8 +17,22 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class BeanAutoconfigure {
 
-    @Bean
+    /**
+     * 负载均衡（可以根据服务名调用）
+     * @return
+     */
+    @Bean("loadBalanceRestTemplate")
+    @Primary
     @LoadBalanced
+    public RestTemplate loadBalanceRestTemplate() {
+        return new RestTemplate();
+    }
+
+    /**
+     * 普通调用（必须有IP）
+     * @return
+     */
+    @Bean("restTemplate")
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.aggregation.worker;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cxytiandi.kittycloud.aggregation.invoker.HttpApiInvoker;
 import com.cxytiandi.kittycloud.aggregation.request.HttpRequest;
 import com.cxytiandi.kittycloud.common.helper.ApplicationContextHelper;
@@ -14,18 +15,18 @@ import java.util.Map;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-04-12 21:57
  */
-public class HttpWorker implements IWorker<HttpRequest, Map> {
+public class HttpWorker implements IWorker<HttpRequest, JSONObject> {
 
     private HttpApiInvoker httpApiInvoker;
 
     @Override
-    public Map action(HttpRequest httpRequest) {
+    public JSONObject action(HttpRequest httpRequest) {
         httpApiInvoker = ApplicationContextHelper.getBean(HttpApiInvoker.class);
         return httpApiInvoker.invoke(httpRequest);
     }
 
     @Override
-    public Map defaultValue() {
+    public JSONObject defaultValue() {
         return null;
     }
 }
