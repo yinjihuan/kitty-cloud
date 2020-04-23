@@ -10,7 +10,7 @@ create table `user`(
     sign varchar(100) null comment '个性签名',
     head_photo_url varchar(100) null comment '头像',
     add_time datetime not null comment '添加时间',
-    update_time datetime not null comment '更新时间',
+    update_time datetime not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
     PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 comment='用户';
 
@@ -26,6 +26,6 @@ create table article(
     text_content text not null comment '文本内容',
     heat int(11) not null comment '热度值（点赞数+评论数+访问数）',
     add_time datetime not null comment '添加时间',
-    update_time datetime not null comment '更新时间',
+    update_time datetime not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
     PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 comment='文章表';
