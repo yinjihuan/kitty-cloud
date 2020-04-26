@@ -56,7 +56,7 @@ public class ArticleIndexDaoImpl implements ArticleIndexDao {
         SearchRequest searchRequest = new SearchRequest(elasticSearchIndexConfig.getArticleSearchIndexName());
         searchRequest.types(EsConstant.DEFAULT_TYPE);
         searchRequest.source(searchSourceBuilder);
-        return restHighLevelClient.search(searchRequest, ArticleDocument.class);
+        return restHighLevelClient.searchByPage(searchRequest, ArticleDocument.class);
     }
 
     private BoolQueryBuilder buildSearchArticleIndexQuery(ArticleIndexSearchParam param) {

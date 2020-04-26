@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.search.biz.service.impl;
 
+import com.cxytiandi.kitty.cat.annotation.CatTransaction;
 import com.cxytiandi.kitty.common.page.Page;
 import com.cxytiandi.kittycloud.search.biz.bo.ArticleIndexBO;
 import com.cxytiandi.kittycloud.search.biz.convert.ArticleDocumentConvert;
@@ -40,6 +41,7 @@ public class ArticleIndexServiceImpl implements ArticleIndexService {
         return articleIndexDao.saveArticleIndex(articleDocumentConvert.convert(param));
     }
 
+    @CatTransaction
     @Override
     public Page<ArticleIndexBO> searchArticleIndex(ArticleIndexSearchParam param) {
         Page<ArticleDocument> articleDocumentPage = articleIndexDao.searchArticleIndex(param);
