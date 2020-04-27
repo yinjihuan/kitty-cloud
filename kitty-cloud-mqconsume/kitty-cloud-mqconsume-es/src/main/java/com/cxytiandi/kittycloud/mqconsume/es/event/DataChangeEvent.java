@@ -18,6 +18,8 @@ public class DataChangeEvent extends ApplicationEvent {
 
     private int changeType;
 
+    private String messageId;
+
     private String message;
 
     /**

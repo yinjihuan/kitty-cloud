@@ -1,6 +1,8 @@
 package com.cxytiandi.kittycloud.mqconsume.es.consume;
 
+import com.cxytiandi.kittycloud.mqconsume.es.async.support.CustomApplicationContextAware;
 import com.cxytiandi.kittycloud.mqconsume.es.event.DataChangeEvent;
+import com.cxytiandi.kittycloud.mqconsume.es.async.support.DefaultFuture;
 import com.cxytiandi.kittycloud.mqconsume.es.request.DataChangeRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
@@ -27,13 +29,27 @@ public class DataChangeConsume implements RocketMQListener<DataChangeRequest> {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Autowired
+    private CustomApplicationContextAware customApplicationContextAware;
+
     @Override
     public void onMessage(DataChangeRequest dataChangeRequest) {
         log.info("received message {} , Thread {}", dataChangeRequest, Thread.currentThread().getName());
         DataChangeEvent event = new DataChangeEvent(this);
         event.setChangeType(dataChangeRequest.getChangeType());
         event.setTable(dataChangeRequest.getTable());
+        event.setMessageId(dataChangeRequest.getMessageId());
+
+        DefaultFuture defaultFuture = DefaultFuture.newFuture(dataChangeRequest, customApplicationContextAware.getTaskCount(), 6000 * 10);
+
         applicationContext.publishEvent(event);
+
+        Boolean result = defaultFuture.get();
+        log.info("MessageId {} 处理结果 {}", dataChangeRequest.getMessageId(), result);
+
+        if (!result) {
+            throw new RuntimeException("处理失败,不进行消息ACK,等待下次重试");
+        }
     }
 
 }

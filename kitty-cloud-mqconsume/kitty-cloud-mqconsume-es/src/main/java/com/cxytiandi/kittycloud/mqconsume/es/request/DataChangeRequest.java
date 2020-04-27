@@ -19,4 +19,6 @@ public class DataChangeRequest {
 
     private String message;
 
+    private String messageId;
+
 }

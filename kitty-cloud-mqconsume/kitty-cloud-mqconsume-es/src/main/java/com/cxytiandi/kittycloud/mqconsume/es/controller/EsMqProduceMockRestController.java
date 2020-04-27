@@ -1,5 +1,6 @@
 package com.cxytiandi.kittycloud.mqconsume.es.controller;
 
+import com.cxytiandi.kittycloud.mqconsume.es.enums.ChangeTypeEnum;
 import com.cxytiandi.kittycloud.mqconsume.es.request.DataChangeRequest;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
@@ -24,7 +25,9 @@ public class EsMqProduceMockRestController {
     @GetMapping("/message/send")
     public String sendMessage() {
         DataChangeRequest request = new DataChangeRequest();
+        request.setMessageId("1");
         request.setMessage("xxx");
+        request.setChangeType(ChangeTypeEnum.INSERT.getType());
         rocketMQTemplate.syncSend("data_change", request);
         return "success";
     }

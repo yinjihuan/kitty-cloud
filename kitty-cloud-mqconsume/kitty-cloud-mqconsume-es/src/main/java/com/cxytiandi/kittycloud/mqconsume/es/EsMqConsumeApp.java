@@ -2,6 +2,7 @@ package com.cxytiandi.kittycloud.mqconsume.es;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * ES MQ消费者启动类
@@ -13,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @作者介绍 http://cxytiandi.com/about
  * @时间 2020-03-29 21:09
  */
+@EnableAsync
 @SpringBootApplication
 public class EsMqConsumeApp {
 

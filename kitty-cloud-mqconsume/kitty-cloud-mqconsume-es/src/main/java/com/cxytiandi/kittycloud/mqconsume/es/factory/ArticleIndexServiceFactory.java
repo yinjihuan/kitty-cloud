@@ -24,6 +24,9 @@ public class ArticleIndexServiceFactory {
     private List<ArticleIndexService> articleIndexServices;
 
     public ArticleIndexService getArticleIndexService(ChangeTypeEnum changeType) {
+        if (changeType == null) {
+            return null;
+        }
         return articleIndexServices.stream().filter(s -> s.changeType() == changeType).findAny()
                 .orElseGet(null);
     }

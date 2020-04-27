@@ -23,6 +23,12 @@ public class ArticleIndexSaveServiceImpl implements ArticleIndexService {
 
     @Override
     public void changeArticleIndex(DataChangeEvent event) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        int a = 2/0;
         if (!consumerTables.contains(event.getTable())) {
             return;
         }
