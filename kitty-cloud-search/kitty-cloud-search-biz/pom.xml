@@ -15,6 +15,34 @@
         <dependency>
             <groupId>com.cxytiandi</groupId>
             <artifactId>kitty-spring-cloud-starter-elasticsearch</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                    <groupId>org.elasticsearch.client</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.elasticsearch.client</groupId>
+                    <artifactId>elasticsearch-rest-client</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>6.8.7</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>elasticsearch-rest-client</artifactId>
+                    <groupId>org.elasticsearch.client</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-client</artifactId>
+            <version>6.8.7</version>
         </dependency>
 
         <dependency>
