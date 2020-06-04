@@ -42,7 +42,7 @@ public class ArticleDaoImpl implements ArticleDao {
     @Override
     public IPage<ArticleDO> listNewestArticles(int page, int pageSize) {
         QueryWrapper<ArticleDO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.orderByDesc("addTime");
+        queryWrapper.orderByDesc("add_time");
 
         Page queryPage = new Page<>(page, pageSize);
         return articleMapper.selectPage(queryPage, queryWrapper);

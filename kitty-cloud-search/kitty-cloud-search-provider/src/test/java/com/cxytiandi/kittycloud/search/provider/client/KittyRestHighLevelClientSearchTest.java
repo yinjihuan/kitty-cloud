@@ -56,6 +56,21 @@ public class KittyRestHighLevelClientSearchTest {
     }
 
     @Test
+    public void testSearchByPage2() {
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+        BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+        searchSourceBuilder.query(boolQuery);
+
+        SearchRequest searchRequest = new SearchRequest(elasticSearchIndexConfig.getArticleSearchIndexName());
+        searchRequest.types(EsConstant.DEFAULT_TYPE);
+        searchRequest.source(searchSourceBuilder);
+
+        Page<ArticleDocument> searchResult = kittyRestHighLevelClient.searchByPage(1, 10, searchRequest, ArticleDocument.class);
+        Assert.assertTrue(searchResult.getTotalPages() > 0);
+    }
+
+    @Test
     public void testSearch() {
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
