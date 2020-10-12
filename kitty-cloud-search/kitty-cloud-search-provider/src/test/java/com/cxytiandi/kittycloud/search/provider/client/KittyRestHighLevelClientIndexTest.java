@@ -41,12 +41,12 @@ public class KittyRestHighLevelClientIndexTest {
     private ArticleDocument buildArticleDocument() {
         ArticleDocument articleDocument = new ArticleDocument();
         articleDocument.setId(1L);
-        articleDocument.setHeat(100);
+        articleDocument.setHeat(80);
         articleDocument.setStatus(1);
         articleDocument.setTags(Lists.newArrayList("java"));
         articleDocument.setTextContent("我要学Java");
         articleDocument.setTitle("Java怎么学");
-        articleDocument.setType(1);
+        articleDocument.setType(3);
         articleDocument.setUserId(1L);
         return articleDocument;
     }
